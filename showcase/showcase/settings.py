@@ -20,12 +20,12 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '_@i&t6-g1sklhh881-7699vdf052t=&o@xvemgj(m^h4)(md@m'
-
+#SECRET_KEY = '_@i&t6-g1sklhh881-7699vdf052t=&o@xvemgj(m^h4)(md@m'
+SECRET_KEY = os.environ.get('SECRET_KEY','1')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['165.227.94.200','evanpatrick.net','www.evanpatrick.net']
+ALLOWED_HOSTS = ['165.227.94.200','evanpatrick.net','www.evanpatrick.net','localhost']
 
 
 # Application definition
@@ -73,16 +73,24 @@ WSGI_APPLICATION = 'showcase.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
+
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'showcase',
-	'USER': 'evan',
-	'PASSWORD': 'Helper423',
-	'HOST': 'localhost',
-	'PORT':'',
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
+
+#{
+    #'default': {
+    #    'ENGINE': 'django.db.backends.postgresql_psycopg2',
+    #    'NAME': 'showcase',
+	#'USER': 'evan',
+	#'PASSWORD': 'Helper423',
+	#'HOST': 'localhost',
+	#'PORT':'',
+    #}
+#}
 
 
 # Password validation
