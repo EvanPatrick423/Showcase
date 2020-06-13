@@ -1,4 +1,7 @@
 *.pyc
 *.sqlite3
 __pycache__/
+landPage/__pycache__/
+polls/__pycache__/
+showcase/__pycache__/
 .env/
