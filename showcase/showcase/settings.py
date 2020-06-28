@@ -31,6 +31,7 @@ ALLOWED_HOSTS = ['165.227.94.200','evanpatrick.net','www.evanpatrick.net','local
 # Application definition
 
 INSTALLED_APPS = [
+    'post.apps.PostConfig',
     'polls.apps.PollsConfig',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -81,6 +82,7 @@ DATABASES = {
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
+
 """
 
 DATABASES = {
