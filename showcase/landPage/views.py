@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-
+from django.template import loader
 
 def index(request):
-    return HttpResponse("Hello, world. You're at the Landing Page.")
+    template = loader.get_template('landPage/index.html')
+    return render(request, 'landPage/index.html')
