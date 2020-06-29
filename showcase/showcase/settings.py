@@ -31,6 +31,7 @@ ALLOWED_HOSTS = ['165.227.94.200','evanpatrick.net','www.evanpatrick.net','local
 # Application definition
 
 INSTALLED_APPS = [
+    'landPage.apps.LandpageConfig',
     'post.apps.PostConfig',
     'polls.apps.PollsConfig',
     'django.contrib.admin',
