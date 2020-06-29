@@ -4,7 +4,7 @@ from django.db import models
 from django.utils import timezone
 import datetime
 # Create your models here.
-class blogPost(models.Model):
+class Post(models.Model):
     post_title = models.CharField(max_length=50)
     post_text = models.CharField(max_length=200)
     pub_date = models.DateTimeField('date published')
@@ -16,7 +16,7 @@ class blogPost(models.Model):
         return self.pub_date >= timezone.now() - datetime.timedelta(days=1)
 
 class Reply(models.Model):
-    blogPost = models.ForeignKey(blogPost, on_delete=models.CASCADE)
+    Post = models.ForeignKey(Post, on_delete=models.CASCADE)
     reply_text = models.CharField(max_length=1000)
     likes = models.IntegerField(default=0)
     dislikes = models.IntegerField(default=0)
