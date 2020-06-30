@@ -1,11 +1,11 @@
 from django.urls import path
 
 from . import views
-app_name = 'post'
 
+
+app_name = 'post'
 urlpatterns = [
     path('', views.index, name='index'),
     path('<int:post_id>/', views.detail, name='detail'),
-    path('<int:question_id>/reply', views.reply, name='detail'),
-    path('<int:post_id>/likes/', views.likes, name='vote'),
+    path('<int:post_id>/reply', views.reply, name='reply'),
 ]

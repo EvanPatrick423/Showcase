@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+
+<head>
+  <title>Blog Post {{ post.id }}</title>
+</head>
+
+<body>
+  <h1>{{ post.post_title }}</h1>
+  <p1>{{ post.post_text }}</p1>
+  <ul>
+    {% if post.reply_set %}
+      {% for reply in post.reply_set.all %}
+        <li>{{ reply.reply_text }}</li>
+        <li>{{ reply.likes }}</li>
+        <li>{{ reply.dislikes }}</li>
+      {% endfor %}
+    {% endif %}
+  </ul>
+</body>
