@@ -22,4 +22,4 @@ class Reply(models.Model):
     dislikes = models.IntegerField(default=0)
 
     def __str__(self):
-        return self.Reply_text
+        return self.reply_text

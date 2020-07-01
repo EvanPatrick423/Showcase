@@ -6,13 +6,16 @@
 
 <body>
   <h1>{{ post.post_title }}</h1>
+  {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
   <p1>{{ post.post_text }}</p1>
+  <p1><br><br>Replies to this post</p1>
   <ul>
     {% if post.reply_set %}
       {% for reply in post.reply_set.all %}
         <li>{{ reply.reply_text }}</li>
-        <li>{{ reply.likes }}</li>
-        <li>{{ reply.dislikes }}</li>
+        <li>Likes {{ reply.likes }}</li>
+        <li>Dislikes {{ reply.dislikes }}</li>
+        <br><br>
       {% endfor %}
     {% endif %}
   </ul>
