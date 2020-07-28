@@ -6,3 +6,4 @@ polls/__pycache__/
 showcase/__pycache__/
 .env/
 .DS_Store
+into-server.zsh

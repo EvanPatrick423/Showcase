@@ -1,22 +1,158 @@
 <!DOCTYPE html>
+<html>
+  <style>
+    #viewport {
+      height: 100%;
+      width: 100%;
+    }
+
+    a {
+      color: black;
+      text-decoration: none;
+
+    }
+    a:hover {
+      color: blue;
+    }
+
+    div {
+      padding: 0.25em
+      margin: auto;
+    }
+
+    .poll {
+      postion:absolute;
+      float:left;
+      background-color: grey;
+      color: black;
+      border-style: solid;
+      border-width: thin;
+      border-radius: 7px;
+      border-color: black;
+    }
+
+    .blog {
+      postion:absolute;
+      float:right;
+      background-color: grey;
+      color: black;
+      border-style: solid;
+      border-width: thin;
+      border-radius: 5px;
+      border-color: black;
+    }
+
+    #top-part {
+      white-space: normal;
+      margin:0;
+      padding:0;
+      display: block;
+      float:left;
+      background-color: #056823;
+      color: white;
+      width: 100%;
+    }
+
+    ul {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+      height: auto;
+      width: 100%;
+      background-color: #07B43B;
+      border-width: 0px;
+      border-style: solid;
+      border-width: thin;
+      border-color: black;
+      overflow: hidden;
+
+    }
+
+    li a {
+      display: block;
+      float: left;
+      color: black;
+      background-color: grey;
+      padding: 8px 16px;
+      border-right: 1px;
+      border-right-style: solid;
+      border-right-color: black;
+      border-bottom: 1px;
+      border-bottom-style: solid;
+      border-bottom-color: black;
+      text-align: center;
+
+
+    }
+
+    li a:hover {
+      background-color: blue;
+      color: white;
+
+    }
+
+    #nav-bar {
+      display: block;
+      height: auto;
+
+    }
+
+    .active {
+      background-color: #4CAF50;
+      color: white;
+      float:right;
+    }
+
+    #header {
+      text-align: center;
+      border-style: solid;
+      border-width: thin;
+      border-color: black;
+    }
+
+    body {
+      background: url(https://cdn-media-1.freecodecamp.org/imgr/MJAkxbh.png)
+    }
+
+  </style>
 
 
 
-<head>
-  <title>EvanPatrick.net</title>
-</head>
+  <head>
+    <title>EvanPatrick.net</title>
+  </head>
 
-<body>
-<h1>Hello world! Welcome to my website.</h1>
-  <hr>
-  <p1>This is really a work in progress, but is meant to showcase my skills so far. I have some apps and widgets on here for you to check out.</p1><br><br>
-  <p1>The software that I used to make the majority of this site is Django, a python application. I will be adding JavaScript and some CSS,  to make this website look and feel better, in the near future.</p>
-    <br>
-    <ul>
-      <li> The <a href="{% url 'polls:index' %}">Voting Poll App</a> was the first application I made through a tutorial on Django's Website.</li><br>
-      <li>Now I am working through making the <a href="{% url 'post:index' %}">Blog Post App</a> in a simlar manner to the voting poll app. But this time with addable replies and like and dislike buttons!</li>
-    </ul>
+  <body>
+    <div id="viewport">
+      <div id="top-part">
+        <div id="header">
+          <h1>Hello World! Welcome to my website.</h1>
+        </div>
+
+        <div id="nav-bar">
+          <ul>
+            <li><a href="#" class="active">Home Page</a></li>
+            <li><a href="{% url 'polls:index' %}">Voting Poll App</a></li>
+            <li><a href="{% url 'post:index' %}">Blog App</a></li>
+            <li><a href="#">The Odin Project Files</a></li>
+            <li><a href="#">Udemy JavaScript files</a></li>
+          </ul>
+        </div>
+      </div>
+
+
+      <hr>
+
+
+      <p>This is really a work in progress, but is meant to showcase my skills so far. I have some apps and widgets on here for you to check out.</p>
+      <p>The software that I used to make the majority of this site is Django, a python application. I will be adding JavaScript and some CSS,  to make this website look and feel better, in the near future.</p>
 
 
 
-</body>
+
+
+
+
+    </div>
+  </body>
+</html>
