@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title></title>
+  </head>
+
+  <body>
+
+    <h1>{{ post.post_title }}</h1>
+
+    <ul>
+    {% for reply in post.reply_set.all %}
+      <li>{{ reply.reply_text }} -- {{ reply.likes }} likes</li>
+    {% endfor %}
+    </ul>
+
+    <a href="{% url 'post:detail' post.id %}">Vote again?</a>
+
+
+  </body>
+
+</html>

@@ -101,6 +101,8 @@
       float:right;
       border-right: 0px;
       border-left: 1px;
+      border-left-color: black;
+      border-left-style: solid;
     }
 
     #header {
@@ -108,6 +110,12 @@
       border-style: solid;
       border-width: thin;
       border-color: black;
+    }
+
+    #active:hover {
+      background-color: blue;
+      color: white;
+
     }
 
     body {
@@ -131,7 +139,7 @@
 
         <div id="nav-bar">
           <ul>
-            <li><a id="active" href="#" style="border-left: 1px">Home Page</a></li>
+            <li><a id="active" href="">Home Page</a></li>
             <li><a href="{% url 'polls:index' %}">Voting Poll App</a></li>
             <li><a href="{% url 'post:index' %}">Blog App</a></li>
             <li><a href="#">The Odin Project Files</a></li>

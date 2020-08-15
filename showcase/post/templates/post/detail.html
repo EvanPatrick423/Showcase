@@ -1,10 +1,30 @@
 <!DOCTYPE html>
 
 <head>
-  <title>Blog Post {{ post.id }}</title>
+  <title>{{ post.post_title }}</title>
 </head>
 
 <body>
+
+  <h1>{{ post.post_title }}</h1>
+
+  <p1>{{ post.post_text }}</p1>
+
+  {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+
+  <form action="{% url 'post:likes' post.id %}" method="post">
+  {% csrf_token %}
+  {% for reply in post.reply_set.all %}
+    <ul>
+      <li>{{reply.reply_text}}</li>
+    </ul>
+    <input type="radio" name="likes" id="reply{{ forloop.counter }}" value="{{ reply.id }}">
+    <label for="reply{{ forloop.counter }}">like?</label><br>
+  {% endfor %}
+  <input type="submit" value="vote">
+  </form>
+
+  <!--
   <h1>{{ post.post_title }}</h1>
   {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
   <p1>{{ post.post_text }}</p1>
@@ -19,4 +39,5 @@
       {% endfor %}
     {% endif %}
   </ul>
+  -->
 </body>
