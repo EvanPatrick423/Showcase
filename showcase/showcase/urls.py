@@ -20,5 +20,6 @@ urlpatterns = [
     path('', include('landPage.urls')),
     path('post/', include('post.urls', namespace="post")),
     path('polls/', include('polls.urls')),
+    path('theodinproject/', include('theodinproject.urls', namespace="theodinproject")),
     path('admin/', admin.site.urls),
 ]
