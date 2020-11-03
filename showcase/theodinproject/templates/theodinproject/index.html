@@ -158,7 +158,31 @@
 
   }
 
+  #main-content {
+    position: relative;
+    margin-top: 20px;
+    background-color: grey;
+    border-width: 0px;
+    border-color: black;
+    border-bottom-width: 1px;
 
+  }
+
+  #content-item {
+    display: block;
+    float:left;
+    border-style: solid;
+    border-top-width: 0px;
+    border-bottom-width: 0px;
+    border-left-width: 1px;
+    width:32%;
+    text-align: center;
+    height:100px;
+
+
+
+
+  }
   </style>
 
   <head>
@@ -170,7 +194,7 @@
     <div id="viewport">
       <div id="top-part">
         <div id="header">
-          <h1>Blog Post App Page</h1>
+          <h1>The Odin Project Files</h1>
         </div>
         <div id="nav-bar">
           <ul>
@@ -181,6 +205,15 @@
             <li><a href="#">Udemy JavaScript files</a></li>
           </ul>
         </div>
+      </div>
+
+      <div>
+        <ul id="main-content">
+          <li id="content-item"><a href="{% url 'webdesign101:fizzbizz' %}">fizzbizz</li>
+          <li id="content-item">thing2</li>
+          <li id="content-item">thing3</li>
+
+        </ul>
       </div>
     </div>
   </body>
