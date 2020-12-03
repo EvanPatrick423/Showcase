@@ -8,20 +8,26 @@
 
 
     <body>
+
+      <p1>This is a javascript widget, and the output is the webdeveloper console. So in order to see the output you will need to open up the console screen.</p1>
+      <p1>The idea for this widget is, you enter an integer and when it is divisible by 3 then it outputs Fizz and when it is divisible by 5 it outputs Bizz.</p1>
+      <p1>When the integer is divisible by both 3 and 5 the code outputs FizzBizz</p1>
       <script>
+
+
       let answer = parseInt(prompt("Please enter the number you would like to FizzBuzz up to: "));
 
-      for (let i = 1; i <= answer; i++) {
-        if (i % 3 === 0 && i % 5 === 0) {
-          console.log("FizzBuzz");
-        } else if (i % 3 === 0) {
-          console.log("Fizz");
-        } else if (i % 5 === 0) {
-          console.log("Buzz");
-        } else {
-          console.log(i);
+        for (let i = 1; i <= answer; i++) {
+          if (i % 3 === 0 && i % 5 === 0) {
+            console.log("FizzBizz");
+          } else if (i % 3 === 0) {
+            console.log("Fizz");
+          } else if (i % 5 === 0) {
+            console.log("Bizz");
+          } else {
+            console.log(i);
+          }
         }
-      }
 
       </script>
 
