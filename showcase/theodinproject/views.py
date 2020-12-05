@@ -11,3 +11,7 @@ def index(request):
 def fizzbizz(request):
     template = loader.get_template('theodinproject/fizzbizz.html')
     return render(request, 'theodinproject/fizzbizz.html')
+
+def rockpaperscissors(request):
+    template = loader.get_template('theodinproject/rockpaperscissors.html')
+    return render(request, 'theodinproject/rockpaperscissors.html')
