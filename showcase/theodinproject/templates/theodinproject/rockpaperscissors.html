@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+
+
+  </head>
+
+  <body>
+
+    <p1>This is a rock paper scissors game. You play 5 rounds and the score is totaled at the end.</p1><br>
+    <p1>The game software itself is done but I want to get it so that the game only initiates when you press the button.</p1><br>
+    <p1>I tried to get it hooked up that way but it's not working for some reason. I'll come back to it later at some point</p1><br><br>
+    <button id='start'>Play Rock Paper Scissors</button>
+    <script>
+
+
+      function playRound (){
+        //Declare needed variables----------------------------------------------------
+        let playerScore = 0;
+        let computerScore = 0;
+        let counter;
+        let rawPlayerInput;
+        let playerInput;
+        let random;
+        let computerSelection;
+
+        for (counter = 1; counter < 6; counter ++) {
+          //Normalized Player input ------------------------------------------------
+          rawPlayerInput = prompt('Round ' + counter + ' Rock Paper Or Scissors?');
+          playerInput = rawPlayerInput.toLowerCase();
+
+          //Making the random computer answer -----------------------------------------
+          random = Math.random();
+          console.log('Round ' + counter + ' random is ' + random);
+
+          if (random < 0.333){
+            computerSelection = 'rock';
+          } else if (random > 0.333 && random < 0.666){
+            computerSelection = 'paper';
+          } else {
+            computerSelection = 'scissors';
+          }
+          console.log('computerSelection is ' + computerSelection);
+
+          if (computerSelection === playerInput) {
+            //Generalized Tie scenario--------------------------------------------
+            alert('You both chose ' + playerInput + "! It's a tie! Therefore the round is forefiet and the round will be replayed.");
+            counter --;
+          }
+            //All losing scenarios -----------------------------------------------
+            else if (computerSelection === 'rock' && playerInput === 'scissors'){
+            alert('Rock breaks scissors. You lose :(');
+            computerScore += 1;
+          } else if (computerSelection === 'paper' && playerInput === 'rock'){
+            alert('Paper covers rock. You lose :(');
+            computerScore += 1;
+          } else if (computerSelection === 'scissors' && playerInput === 'paper'){
+            alert('Scissors cut paper. You lose :(');
+            computerScore += 1;
+          }
+            //All winning scenarios-----------------------------------------------
+            else if (playerInput === 'rock' && computerSelection === 'scissors'){
+            alert('Rock breaks scissors. You win :)');
+            playerScore += 1;
+          } else if (playerInput === 'paper' && computerSelection === 'rock'){
+            alert('Paper covers rock. You win :)');
+            playerScore += 1;
+          } else if (playerInput === 'scissors' && computerSelection === 'paper'){
+            alert('Scissors cut paper. You win :)');
+            playerScore += 1;
+          }
+            //Error Scenario------------------------------------------------------
+            else {
+            alert('Something went wrong! Your potential victory or defeat is lost to time. The round will be replayed.');
+            counter --;
+          }
+          //Showing current score before returning to begining of loop ---------------
+          alert('Current scores: Player ' + playerScore + ' Computer ' + computerScore);
+        }
+
+        //Show final Score and tell who won -------------------------------------------
+        if (playerScore > computerScore){
+          alert('You win! Final scores: Player ' + playerScore + ' Computer ' + computerScore);
+        }
+
+
+      }
+
+      let startGame = document.getElementById('start');
+      startGame.onclick = playRound();
+
+
+    </script>
+
+
+
+  </body>
+
+
+
+
+
+</html>
