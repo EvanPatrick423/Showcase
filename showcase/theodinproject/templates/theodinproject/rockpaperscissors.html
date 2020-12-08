@@ -16,7 +16,7 @@
 
 
       function playRound (){
-        //Declare needed variables----------------------------------------------------
+        //Declare needed variables----------------------------------------------
         let playerScore = 0;
         let computerScore = 0;
         let counter;
@@ -26,11 +26,11 @@
         let computerSelection;
 
         for (counter = 1; counter < 6; counter ++) {
-          //Normalized Player input ------------------------------------------------
+          //Normalized Player input --------------------------------------------
           rawPlayerInput = prompt('Round ' + counter + ' Rock Paper Or Scissors?');
           playerInput = rawPlayerInput.toLowerCase();
 
-          //Making the random computer answer -----------------------------------------
+          //Making the random computer answer ----------------------------------
           random = Math.random();
           console.log('Round ' + counter + ' random is ' + random);
 
