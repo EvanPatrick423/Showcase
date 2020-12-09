@@ -15,3 +15,7 @@ def fizzbizz(request):
 def rockpaperscissors(request):
     template = loader.get_template('theodinproject/rockpaperscissors.html')
     return render(request, 'theodinproject/rockpaperscissors.html')
+
+def DOM(request):
+    template = loader.get_template('theodinproject/DOM.html')
+    return render(request, 'theodinproject/DOM.html')
