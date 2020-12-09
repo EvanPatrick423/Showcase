@@ -9,8 +9,7 @@
   <body>
 
     <p1>This is a rock paper scissors game. You play 5 rounds and the score is totaled at the end.</p1><br>
-    <p1>The game software itself is done but I want to get it so that the game only initiates when you press the button.</p1><br>
-    <p1>I tried to get it hooked up that way but it's not working for some reason. I'll come back to it later at some point</p1><br><br>
+    <br>
     <button id='start'>Play Rock Paper Scissors</button>
     <script>
 
@@ -89,8 +88,11 @@
 
       }
 
-      let startGame = document.getElementById('start');
-      startGame.onclick = playRound();
+      const btn = document.querySelector('#start');
+      btn.onclick = () => playRound();
+
+      //let startGame = document.getElementById('start');
+      //startGame.onclick = playRound();
 
 
     </script>
