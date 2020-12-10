@@ -198,10 +198,10 @@
         </div>
         <div id="nav-bar">
           <ul>
-            <li><a href="/" style="border-left: 1px">Home Page</a></li>
+            <li><a id="active" href="/" style="border-left: 1px">Home Page</a></li>
             <li><a href="{% url 'polls:index' %}">Voting Poll App</a></li>
             <li><a href="{% url 'post:index' %}">Blog App</a></li>
-            <li><a id="active" href="{% url 'theodinproject:index' %}">The Odin Project Files</a></li>
+            <li><a  href="{% url 'theodinproject:index' %}">The Odin Project Files</a></li>
             <li><a href="#">Udemy JavaScript files</a></li>
           </ul>
         </div>
@@ -214,7 +214,7 @@
         <p2><a href="https://www.theodinproject.com">The Odin Project</a> is a very informative and free webdesign course that I have been slowly chugging through. And has been the biggest resource in my path of obtaining a webdesign carrer.</p>
         <br>
         <ul id="main-content">
-          <li id="content-item"><a href="{% url 'theodinproject:fizzbizz' %}">fizzbizz</a></li>
+          <li id="content-item"><a href="{% url 'theodinproject:fizzbizz' %}">FizzBuzz</a></li>
           <li id="content-item"><a href="{% url 'theodinproject:rockpaperscissors' %}">Rock Paper Scissors Game</a></li>
           <li id="content-item"><a href="{% url 'theodinproject:DOM' %}">Document Object Model</a></li>
 
