@@ -24,6 +24,6 @@ def javascript30(request):
     template = loader.get_template('theodinproject/javascript30/javascript30.html')
     return render(request, 'theodinproject/javascript30/javascript30.html')
 
-def keyboardDrumMachine(request):
-    template = loader.get_template('theodinproject/javascript30/keyboardDrumMachine.html')
-    return render(request, 'theodinproject/javascript30/keyboardDrumMachine.html')
+def keyboardDrumKit(request):
+    template = loader.get_template('theodinproject/javascript30/keyboardDrumKit/keyboardDrumKit.html')
+    return render(request, 'theodinproject/javascript30/keyboardDrumKit/keyboardDrumKit.html')

@@ -9,5 +9,5 @@ urlpatterns = [
     path('rockpaperscissors', views.rockpaperscissors, name='rockpaperscissors'),
     path('DOM', views.DOM, name='DOM'),
     path('javascript30', views.javascript30, name='javascript30'),
-    path('keyboardDrumMachine', views.keyboardDrumMachine, name='keyboardDrumMachine')
+    path('keyboardDrumKit', views.keyboardDrumKit, name='keyboardDrumKit')
 ]
