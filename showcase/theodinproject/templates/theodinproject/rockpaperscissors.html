@@ -86,7 +86,6 @@
       //function that takes selection as playerInput and does all logic for game
       function playRound (playerInput){
         sum = playerScore + computerScore;
-        console.log('sum is ' + sum)
         if (sum < 5){
           for (i = 0; i < 1; i ++) {
             //Making the random computer answer ----------------------------------
@@ -146,16 +145,16 @@
               break;
             }
           }
-        } else if (playerScore > computerScore){
-          info.textContent = 'The player won!!! They got the most out of 5 rounds'
-          choice.textContent = ''
-        } else if (playerScore < computerScore){
-          info.textContent = 'The computer won!!! It got the most out of 5 rounds'
-          choice.textContent = ''
-        } else {
-          info.textContent = 'Game Over'
-          choice.textContent = ''
-        }
+        } else {}
+        sum = playerScore + computerScore;
+        console.log('sum is ' + sum);
+        if (sum >= 5 && playerScore > computerScore){
+          choice.textContent = 'The player won!!! They got the most out of 5 rounds';
+        } else if (sum >= 5 && playerScore < computerScore){
+          choice.textContent = 'The computer won!!! It got the most out of 5 rounds';
+        } else {}
+
+
       }
     </script>
 
