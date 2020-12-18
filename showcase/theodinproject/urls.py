@@ -9,5 +9,7 @@ urlpatterns = [
     path('rockpaperscissors', views.rockpaperscissors, name='rockpaperscissors'),
     path('DOM', views.DOM, name='DOM'),
     path('javascript30', views.javascript30, name='javascript30'),
-    path('keyboardDrumKit', views.keyboardDrumKit, name='keyboardDrumKit')
+    path('keyboardDrumKit', views.keyboardDrumKit, name='keyboardDrumKit'),
+    path('etchASketch', views.etchASketch, name='etchASketch'),
+    path('sounds/<str:sound>/', views.sounds, name='sounds')
 ]

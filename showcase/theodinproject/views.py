@@ -27,3 +27,12 @@ def javascript30(request):
 def keyboardDrumKit(request):
     template = loader.get_template('theodinproject/javascript30/keyboardDrumKit/keyboardDrumKit.html')
     return render(request, 'theodinproject/javascript30/keyboardDrumKit/keyboardDrumKit.html')
+
+def etchASketch (request):
+    template = loader.get_template('theodinproject/etchASketch.html')
+    return render(request, 'theodinproject/etchASketch.html')
+
+def sounds(request, sound):
+    lookFor = 'theodinproject/javascript30/keyboardDrumKit/sounds/' + sound
+    template = loader.get_audio(lookFor)
+    return render(request, lookFor)
