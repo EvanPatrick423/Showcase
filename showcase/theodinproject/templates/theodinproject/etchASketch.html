@@ -5,7 +5,33 @@
 </head>
 
 <body>
-<p1>thingy things</p1>
+<div id="thing"></div>
+
+<script>
+
+
+
+
+  let i;
+  let x = 1;
+  for (i = 1; i < 5; i ++){
+    const content = document.createElement('div');
+    content.style.cssText = 'background: white; border-color: black; border-style: solid; height: 50px';
+    thing.appendChild(content)
+    for (x = 1; x < 5; x ++){
+      const content2 = document.createElement('div');
+      content2.style.cssText = 'background: grey; height: 40px; width: 100px; float:left ;';
+      content.appendChild(content2)
+      const textcont2 = document.createElement('p1');
+      textcont2.textContent = "Row " + i  + " Col " + x;
+      content2.appendChild(textcont2);
+      content2.classList.add('turn');
+    }
+  }
+  const turn = document.querySelector('turn');
+  turn.onclick = () => content.style.cssText = 'background: black';
+
+</script>
 
 
 </body>
