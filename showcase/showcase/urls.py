@@ -22,4 +22,5 @@ urlpatterns = [
     path('polls/', include('polls.urls')),
     path('theodinproject/', include('theodinproject.urls', namespace="theodinproject")),
     path('admin/', admin.site.urls),
+    path('cssAnimations/', include('cssAnimations.urls', namespace='cssAnimations')),
 ]

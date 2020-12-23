@@ -1,15 +1,18 @@
 <!DOCTYPE html>
 <html>
+  <style>
+
+  </style>
   <head>
     <title>EvanPatrick.net</title>
     {% load static %}
-    <link type="text/css" rel="stylesheet" href="{% static 'landPage/style.css' %}">
+    <link type="text/css" rel="stylesheet" href="{% static 'cssAnimations/style.css' %}">
   </head>
 
   <body>
-      <div id="top-part">
+      <div id="view">
         <div id="header">
-          <h1>Hello World! Welcome to my website.</h1>
+          <h1>Various CSS Animations and Widgets</h1>
         </div>
 
         <div id="nav-bar">
@@ -19,16 +22,24 @@
             <li><a href="{% url 'post:index' %}">Blog App</a></li>
             <li><a href="{% url 'theodinproject:index' %}">The Odin Project Files</a></li>
             <li><a href="{% url 'theodinproject:javascript30' %}">Javascript30</a></li>
+            <li><a href="{% url 'cssAnimations:index' %}">Various CSS Animations</a></li>
           </ul>
+        </div>
+        <div id="animation-bay">
+          <div class="animation" id="one">
+            <div id="back"></div>
+            <div class="stars" id="star-1"></div>
+            <div class="stars" id="star-2"></div>
+          </div>
+
+          <div class="animation" id="heart-beat">
+            <div class="back"></div>
+            <div class="heart"></div>
+          </div>
         </div>
       </div>
 
 
-      <hr>
-
-
-      <p>This is really a work in progress, but is meant to showcase my skills so far. I have some apps and widgets on here for you to check out.</p>
-      <p>The software that I used to make the majority of this site is Django, a python application. I will be adding JavaScript and some CSS,  to make this website look and feel better, in the near future.</p>
 
 
 
