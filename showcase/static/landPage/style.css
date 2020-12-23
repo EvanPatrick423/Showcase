@@ -1,18 +1,12 @@
-#top-part {
-  white-space: normal;
-  margin:0;
-  padding:0;
-  display: block;
-  float:left;
-  background-color: #056823;
-  color: white;
+#view {
+  height: 100%;
   width: 100%;
 }
 
 #nav-bar {
   display: block;
   height: auto;
-
+  border-radius: 5px;
 }
 
 #active {
@@ -30,26 +24,19 @@
   border-style: solid;
   border-width: thin;
   border-color: black;
+  white-space: normal;
+  margin:0;
+  padding:0;
+  display: block;
+  float:left;
+  background-color: #056823;
+  color: white;
+  width: 100%;
 }
 
 #active:hover {
   background-color: blue;
   color: white;
-
-}
-
-a {
-  color: black;
-  text-decoration: none;
-
-}
-a:hover {
-  color: blue;
-}
-
-div {
-  padding: 0.25em
-  margin: auto;
 }
 
 .poll {
@@ -86,7 +73,6 @@ ul {
   border-width: thin;
   border-color: black;
   overflow: hidden;
-
 }
 
 li a {
@@ -99,15 +85,25 @@ li a {
   border-right-style: solid;
   border-right-color: black;
   text-align: center;
-
-
-
 }
 
 li a:hover {
   background-color: blue;
   color: white;
+}
 
+a {
+  color: black;
+  text-decoration: none;
+}
+
+a:hover {
+  color: blue;
+}
+
+div {
+  padding: 0.25em
+  margin: auto;
 }
 
 body {

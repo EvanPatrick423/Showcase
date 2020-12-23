@@ -1,20 +1,42 @@
-#viewport {
+#view {
   height: 100%;
   width: 100%;
 }
 
-a {
-  color: black;
-  text-decoration: none;
-
-}
-a:hover {
-  color: blue;
+#nav-bar {
+  display: block;
+  height: auto;
+  border-radius: 5px;
 }
 
-div {
-  padding: 0.25em
-  margin: auto;
+#active {
+  background-color: #4CAF50;
+  color: white;
+  float:right;
+  border-right: 0px;
+  border-left: 1px;
+  border-left-color: black;
+  border-left-style: solid;
+}
+
+#header {
+  text-align: center;
+  border-style: solid;
+  border-width: thin;
+  border-color: black;
+  white-space: normal;
+  margin:0;
+  padding:0;
+  display: block;
+  float:left;
+  background-color: #056823;
+  color: white;
+  width: 100%;
+}
+
+#active:hover {
+  background-color: blue;
+  color: white;
 }
 
 .poll {
@@ -39,17 +61,6 @@ div {
   border-color: black;
 }
 
-#top-part {
-  white-space: normal;
-  margin:0;
-  padding:0;
-  display: block;
-  float:left;
-  background-color: #056823;
-  color: white;
-  width: 100%;
-}
-
 ul {
   list-style-type: none;
   margin: 0;
@@ -62,7 +73,6 @@ ul {
   border-width: thin;
   border-color: black;
   overflow: hidden;
-
 }
 
 li a {
@@ -75,44 +85,25 @@ li a {
   border-right-style: solid;
   border-right-color: black;
   text-align: center;
-
-
-
 }
 
 li a:hover {
   background-color: blue;
   color: white;
-
 }
 
-#nav-bar {
-  display: block;
-  height: auto;
-
+a {
+  color: black;
+  text-decoration: none;
 }
 
-#active {
-  background-color: #4CAF50;
-  color: white;
-  float:right;
-  border-right: 0px;
-  border-left: 1px;
-  border-left-color: black;
-  border-left-style: solid;
+a:hover {
+  color: blue;
 }
 
-#header {
-  text-align: center;
-  border-style: solid;
-  border-width: thin;
-  border-color: black;
-}
-
-#active:hover {
-  background-color: blue;
-  color: white;
-
+div {
+  padding: 0.25em
+  margin: auto;
 }
 
 body {
