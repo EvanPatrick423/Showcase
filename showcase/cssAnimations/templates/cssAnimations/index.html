@@ -17,7 +17,7 @@
 
         <div id="nav-bar">
           <ul>
-            <li><a id="active" href="">Home Page</a></li>
+            <li><a id="active" href="{% url 'landPage:index' %}">Home Page</a></li>
             <li><a href="{% url 'polls:index' %}">Voting Poll App</a></li>
             <li><a href="{% url 'post:index' %}">Blog App</a></li>
             <li><a href="{% url 'theodinproject:index' %}">The Odin Project Files</a></li>
@@ -35,6 +35,34 @@
           <div class="animation" id="heart-beat">
             <div class="back"></div>
             <div class="heart"></div>
+          </div>
+
+          <div class="animation" id="penquin-wave">
+            <div id="p-background">
+              <div class="penguin">
+                <div class="penguin-bottom">
+                  <div class="right-hand"></div>
+                  <div class="left-hand"></div>
+                  <div class="right-feet"></div>
+                  <div class="left-feet"></div>
+                </div>
+                <div class="penguin-top">
+                  <div class="right-cheek"></div>
+                  <div class="left-cheek"></div>
+                  <div class="belly"></div>
+                  <div class="right-eye">
+                    <div class="sparkle"></div>
+                  </div>
+                  <div class="left-eye">
+                    <div class="sparkle"></div>
+                  </div>
+                  <div class="blush-right"></div>
+                  <div class="blush-left"></div>
+                  <div class="beak-top"></div>
+                  <div class="beak-bottom"></div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
