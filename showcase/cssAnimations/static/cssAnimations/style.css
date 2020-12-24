@@ -1,7 +1,8 @@
 #animation-bay {
-  float:left;
   display:inline-flex;
-
+  justify-content: space-evenly;
+  flex-direction: row;
+  width: 100%;
 }
 /* animation 1 */
 #one {
@@ -150,11 +151,13 @@
 
  .penguin {
    position: relative;
-   margin: auto;
-   display: block;
-   margin-top: 5%;
    width: var(--penguin-size, 300px);
    height: var(--penguin-size, 300px);
+   background:#c6faf1;
+   z-index: -10;
+   border-radius: 20%;
+   height: 300px;
+   width: 300px;
  }
 
  .right-cheek {
@@ -327,15 +330,6 @@
    width: 16%;
    height: 10%;
    border-radius: 50%;
- }
-
- #p-background {
-   position: absolute;
-   background:#c6faf1;
-   z-index: -10;
-   border-radius: 20%;
-   height: 300px;
-   width: 300px;
  }
 
  .penguin * {
