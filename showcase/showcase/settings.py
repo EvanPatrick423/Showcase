@@ -35,6 +35,7 @@ INSTALLED_APPS = [
     'post.apps.PostConfig',
     'polls.apps.PollsConfig',
     'theodinproject.apps.TheodinprojectConfig',
+    'cssAnimations.apps.CssanimationsConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
