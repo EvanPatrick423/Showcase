@@ -11,5 +11,5 @@ urlpatterns = [
     path('javascript30', views.javascript30, name='javascript30'),
     path('keyboardDrumKit', views.keyboardDrumKit, name='keyboardDrumKit'),
     path('etchASketch', views.etchASketch, name='etchASketch'),
-    path('sounds/<str:sound>/', views.sounds, name='sounds')
+    #path('script', views.script, name='script')
 ]

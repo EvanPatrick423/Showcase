@@ -31,8 +31,8 @@ def keyboardDrumKit(request):
 def etchASketch (request):
     template = loader.get_template('theodinproject/etchASketch.html')
     return render(request, 'theodinproject/etchASketch.html')
-
-def sounds(request, sound):
-    lookFor = 'theodinproject/javascript30/keyboardDrumKit/sounds/' + sound
-    template = loader.get_audio(lookFor)
-    return render(request, lookFor)
+"""
+def script(request):
+    template = loader.get_template('')
+    return render(request, '')
+"""
