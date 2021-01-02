@@ -26,3 +26,8 @@ body {
   flex-grow:1 ;
   float:left ;
 }
+
+.btn-on {
+  background:blue ;
+  color:white ;
+}

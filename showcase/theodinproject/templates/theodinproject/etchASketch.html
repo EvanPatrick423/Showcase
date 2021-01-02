@@ -15,7 +15,8 @@
 <div id="title">
   <h1>Etch A Sketch</h1>
 </div>
-<!--<div id="text"></div>   Do I really need this??-->
+<!--  <div id="text"></div>   Do I really need this??-->
+<button id="eraser-btn">Toggle Eraser</button>
 <div id="board"></div>
 
 <script>
@@ -32,17 +33,33 @@
     }
   }
 
+  //eraser buttons
+  let eraser = false;
+  const eraserButton = document.querySelector('#eraser-btn');
+  eraserButton.addEventListener('click', () => {
+    if (eraser) {
+      eraser = false;
+      eraserButton.classList.remove('btn-on');
+    } else {
+      eraser = true;
+      eraserButton.classList.add('btn-on');
+    }
+  })
+
   //changes color of grid items
   function drawClick(x) {
-
-    x.target.classList.add("pressed");
+    if (eraser) {
+      x.target.classList.remove("pressed");
+    } else {
+      x.target.classList.add("pressed");
+    }
   }
 
   //listening for click or hover
   function listen() {
     items = document.querySelectorAll(".grid-item");
     for (i = 0; i < items.length; i++) {
-      items[i].classList.add("found");
+      items[i].classList.add("found"); //check to see if the querySelectorAll is finding my grid items
       items[i].addEventListener('mousedown', drawClick);
     }
   }
