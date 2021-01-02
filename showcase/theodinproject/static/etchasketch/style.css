@@ -1,0 +1,28 @@
+#board {
+  height:400px;
+  width: 400px;
+  display: flex;
+  flex-direction:column;
+
+}
+
+body {
+  display: flex;
+  background: grey;
+  align-items: center;
+  flex-direction: column;
+}
+
+.grid-item {
+  background:white ;
+  align-content:stretch ;
+  flex-grow:1 ;
+  float:left ;
+}
+
+.pressed {
+  background:black ;
+  align-content:stretch ;
+  flex-grow:1 ;
+  float:left ;
+}

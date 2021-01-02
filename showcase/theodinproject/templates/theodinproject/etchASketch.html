@@ -1,35 +1,56 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <title></title>
+  {% load static %}
+  <link type="text/css" rel="stylesheet" href="{% static 'etchasketch/style.css' %}">
 </head>
 
+
+
+
+
 <body>
-<div id="thing"></div>
+<div id="title">
+  <h1>Etch A Sketch</h1>
+</div>
+<!--<div id="text"></div>   Do I really need this??-->
+<div id="board"></div>
 
 <script>
+  let z = 4;
+  for (let i = 0; i < z; i ++){
+    const row = document.createElement('div');
+    row.style.cssText = 'flex-grow:1 ; display:flex ;';
+    board.appendChild(row)
 
-
-
-
-  let i;
-  let x = 1;
-  for (i = 1; i < 5; i ++){
-    const content = document.createElement('div');
-    content.style.cssText = 'background: white; border-color: black; border-style: solid; height: 50px';
-    thing.appendChild(content)
-    for (x = 1; x < 5; x ++){
-      const content2 = document.createElement('div');
-      content2.style.cssText = 'background: grey; height: 40px; width: 100px; float:left ;';
-      content.appendChild(content2)
-      const textcont2 = document.createElement('p1');
-      textcont2.textContent = "Row " + i  + " Col " + x;
-      content2.appendChild(textcont2);
-      content2.classList.add('turn');
+    for (let x = 0; x < z; x ++){
+      const gridItem = document.createElement('div');
+      gridItem.classList.add("grid-item")
+      row.appendChild(gridItem)
     }
   }
-  const turn = document.querySelector('turn');
-  turn.onclick = () => content.style.cssText = 'background: black';
+
+  //changes color of grid items
+  function drawClick(x) {
+
+    x.target.classList.add("pressed");
+  }
+
+  //listening for click or hover
+  function listen() {
+    items = document.querySelectorAll(".grid-item");
+    for (i = 0; i < items.length; i++) {
+      items[i].classList.add("found");
+      items[i].addEventListener('mousedown', drawClick);
+    }
+  }
+
+  listen()
+
+
+
 
 </script>
 
