@@ -3,7 +3,11 @@
   width: 400px;
   display: flex;
   flex-direction:column;
+}
 
+#button-holder {
+  display:flex ;
+  justify-content: center;
 }
 
 body {

@@ -16,7 +16,10 @@
   <h1>Etch A Sketch</h1>
 </div>
 <!--  <div id="text"></div>   Do I really need this??-->
-<button id="eraser-btn">Toggle Eraser</button>
+<div id="button-holder">
+  <button id="eraser-btn">Toggle Eraser</button>
+  <button id="erase-all">Erase All</button>
+</div>
 <div id="board"></div>
 
 <script>
@@ -43,6 +46,14 @@
     } else {
       eraser = true;
       eraserButton.classList.add('btn-on');
+    }
+  })
+
+  const eraseAllButton = document.querySelector('#erase-all');
+  eraseAllButton.addEventListener('click', () => {
+    items = document.querySelectorAll(".grid-item");
+    for (i = 0; i < items.length; i++) {
+      items[i].classList.remove("pressed");
     }
   })
 
@@ -75,11 +86,11 @@
     }
   }
 
-  //listening for click or hover
+  //listening for click or hover on board elements
   function listen() {
     items = document.querySelectorAll(".grid-item");
     for (i = 0; i < items.length; i++) {
-      items[i].classList.add("found"); //check to see if the querySelectorAll is finding my grid items
+      //items[i].classList.add("found"); //check to see if the querySelectorAll is finding my grid items
       items[i].addEventListener('mousedown', drawOnClick);
       items[i].addEventListener('mouseenter', drawWhileClicked);
     }
