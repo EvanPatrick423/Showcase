@@ -20,7 +20,7 @@
 <div id="board"></div>
 
 <script>
-  let z = 4;
+  let z = 100;
   for (let i = 0; i < z; i ++){
     const row = document.createElement('div');
     row.style.cssText = 'flex-grow:1 ; display:flex ;';
@@ -47,11 +47,31 @@
   })
 
   //changes color of grid items
-  function drawClick(x) {
+  function drawOnClick(x) {
     if (eraser) {
       x.target.classList.remove("pressed");
     } else {
       x.target.classList.add("pressed");
+    }
+  }
+
+  //seeing if the mouse is down or not
+  let mouse;
+  document.body.onmousedown = function() {
+    mouse = 0;
+    mouse++;
+  }
+  document.body.onmouseup = function() {
+    mouse--;
+  }
+
+  function drawWhileClicked(x) {
+    if (mouse > 0) {
+      if (eraser) {
+        x.target.classList.remove("pressed");
+      } else {
+        x.target.classList.add("pressed");
+      }
     }
   }
 
@@ -60,14 +80,17 @@
     items = document.querySelectorAll(".grid-item");
     for (i = 0; i < items.length; i++) {
       items[i].classList.add("found"); //check to see if the querySelectorAll is finding my grid items
-      items[i].addEventListener('mousedown', drawClick);
+      items[i].addEventListener('mousedown', drawOnClick);
+      items[i].addEventListener('mouseenter', drawWhileClicked);
     }
   }
 
+
+
+
+
+
   listen()
-
-
-
 
 </script>
 
