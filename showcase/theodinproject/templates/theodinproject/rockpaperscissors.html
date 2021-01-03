@@ -107,11 +107,11 @@
             //--------------------------------------------------------------------
 
             if (computerSelection === playerInput) {
-              //Generalized Tie scenario--------------------------------------------
+              //Generalized Tie scenario
               info.textContent = 'It was a tie';
               break;
             }
-              //All losing scenarios -----------------------------------------------
+              //All losing scenarios 
               else if (computerSelection === 'rock' && playerInput === 'scissors'){
               computerScore += 1;
               compSco.textContent = 'Computer: ' + computerScore.toString();

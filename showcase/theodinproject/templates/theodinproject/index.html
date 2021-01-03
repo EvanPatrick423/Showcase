@@ -14,30 +14,26 @@
       </div>
 
       <div id="nav-bar">
-        <ul>
-          <li><a id="active" href="{% url 'landPage:index' %}">Home Page</a></li>
-          <li><a href="{% url 'polls:index' %}">Voting Poll App</a></li>
-          <li><a href="{% url 'post:index' %}">Blog App</a></li>
-          <li><a href="{% url 'theodinproject:index' %}">The Odin Project Files</a></li>
-          <li><a href="{% url 'theodinproject:javascript30' %}">Javascript30</a></li>
-          <li><a href="{% url 'cssAnimations:index' %}">Various CSS Animations</a></li>
-        </ul>
+        <a id="home" class="nav-item" href="{% url 'landPage:index' %}">Home Page</a>
+        <a class="nav-item" href="{% url 'theodinproject:index' %}">The Odin Project Files</a>
+        <a class="nav-item" href="{% url 'cssAnimations:index' %}">Various CSS Animations</a>
+        <a class="nav-item" href="{% url 'theodinproject:javascript30' %}">Javascript30</a>
+        <a class="nav-item" href="{% url 'polls:index' %}">Voting Poll App</a>
       </div>
-    </div>
-
-      <div>
 
 
+      <div id="main">
         <!-- Need to make the link noticable, for now the oding project only shows as a link when hovering I want to change this individual link -->
-        <p2><a href="https://www.theodinproject.com">The Odin Project</a> is a very informative and free webdesign course that I have been slowly chugging through. And has been the biggest resource in my path of obtaining a webdesign carrer.</p>
+        <div id="text-holder">
+          <p2><a href="https://www.theodinproject.com">The Odin Project</a> is a very informative and free webdesign course that I have been slowly chugging through. And has been the biggest resource in my path of obtaining a webdesign carrer.</p>
+        </div>
         <br>
-        <ul id="main-content">
-          <li id="content-item"><a href="{% url 'theodinproject:fizzbizz' %}">FizzBuzz</a></li>
-          <li id="content-item"><a href="{% url 'theodinproject:rockpaperscissors' %}">Rock Paper Scissors Game</a></li>
-          <li id="content-item"><a href="{% url 'theodinproject:DOM' %}">Document Object Model</a></li>
-          <li id="content-item"><a href="{% url 'theodinproject:etchASketch' %}">Etch a Sketch</a></li>
-
-        </ul>
+        <div id="main-content">
+          <a class="content-item" href="{% url 'theodinproject:fizzbizz' %}">FizzBuzz</a>
+          <a class="content-item" href="{% url 'theodinproject:rockpaperscissors' %}">Rock Paper Scissors Game</a>
+          <a class="content-item" href="{% url 'theodinproject:DOM' %}">Document Object Model</a>
+          <a class="content-item" href="{% url 'theodinproject:etchASketch' %}">Etch a Sketch</a>
+        </div>
       </div>
     </div>
   </body>

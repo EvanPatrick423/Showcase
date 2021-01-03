@@ -16,14 +16,11 @@
       </div>
 
       <div id="nav-bar">
-        <ul>
-          <li><a id="active" href="{% url 'landPage:index' %}">Home Page</a></li>
-          <li><a href="{% url 'polls:index' %}">Voting Poll App</a></li>
-          <li><a href="{% url 'post:index' %}">Blog App</a></li>
-          <li><a href="{% url 'theodinproject:index' %}">The Odin Project Files</a></li>
-          <li><a href="{% url 'theodinproject:javascript30' %}">Javascript30</a></li>
-          <li><a href="{% url 'cssAnimations:index' %}">Various CSS Animations</a></li>
-        </ul>
+        <a id="home" class="nav-item" href="{% url 'landPage:index' %}">Home Page</a>
+        <a class="nav-item" href="{% url 'theodinproject:index' %}">The Odin Project Files</a>
+        <a class="nav-item" href="{% url 'cssAnimations:index' %}">Various CSS Animations</a>
+        <a class="nav-item" href="{% url 'theodinproject:javascript30' %}">Javascript30</a>
+        <a class="nav-item" href="{% url 'polls:index' %}">Voting Poll App</a>
       </div>
     </div>
 
@@ -32,11 +29,11 @@
     <div id="poll-questions">
 
       {% if latest_question_list %}
-        <ul id="poll-question-ul">
+        <div id="poll-question-ul">
           {% for question in latest_question_list %}
-            <li><a id ="poll-question" href="{% url 'polls:detail' question.id %}">{{ question.question_text }}</a></li>
+            <a id ="poll-question" href="{% url 'polls:detail' question.id %}">{{ question.question_text }}</a>
           {% endfor %}
-        </ul>
+        </div>
       {% else %}
         <p>No polls are available.</p>
       {% endif %}

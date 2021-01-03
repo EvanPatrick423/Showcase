@@ -8,6 +8,18 @@
 #button-holder {
   display:flex ;
   justify-content: center;
+  align-items: center;
+  margin-bottom:20px;
+  height:100px;
+  width:100%;
+  background-color: black;
+}
+
+button {
+  margin:30px;
+  color: grey;
+  height: 30px;
+  width: 100px;
 }
 
 body {
@@ -15,6 +27,7 @@ body {
   background: grey;
   align-items: center;
   flex-direction: column;
+  margin:4px ;
 }
 
 .grid-item {
