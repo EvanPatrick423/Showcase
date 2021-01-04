@@ -24,15 +24,16 @@
 
       <div id="main">
         <!-- Need to make the link noticable, for now the oding project only shows as a link when hovering I want to change this individual link -->
-        <div id="text-holder">
+        <div id="text">
           <p2><a href="https://www.theodinproject.com">The Odin Project</a> is a very informative and free webdesign course that I have been slowly chugging through. And has been the biggest resource in my path of obtaining a webdesign carrer.</p>
         </div>
-        <br>
+
         <div id="main-content">
-          <a class="content-item" href="{% url 'theodinproject:fizzbizz' %}">FizzBuzz</a>
-          <a class="content-item" href="{% url 'theodinproject:rockpaperscissors' %}">Rock Paper Scissors Game</a>
-          <a class="content-item" href="{% url 'theodinproject:DOM' %}">Document Object Model</a>
           <a class="content-item" href="{% url 'theodinproject:etchASketch' %}">Etch a Sketch</a>
+          <a class="content-item" href="{% url 'theodinproject:rockpaperscissors' %}">Rock Paper Scissors Game</a>
+          <a class="content-item" href="{% url 'theodinproject:fizzbizz' %}">FizzBuzz</a>
+          <a class="content-item" href="{% url 'theodinproject:DOM' %}">Document Object Model</a>
+
         </div>
       </div>
     </div>
