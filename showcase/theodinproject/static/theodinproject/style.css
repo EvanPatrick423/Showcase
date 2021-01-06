@@ -112,6 +112,15 @@ li a {
   color: white;
 }
 
+.noticable-link {
+  color: blue;
+  style: underline;
+}
+
+.noticable-link:hover {
+  text-decoration: underline;
+}
+
 li a:hover {
   background-color: blue;
   color: white;
