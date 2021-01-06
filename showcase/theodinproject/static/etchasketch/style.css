@@ -1,6 +1,6 @@
 #board {
-  height:500px;
-  width: 500px;
+  height:550px;
+  width: 550px;
   display: flex;
   flex-direction:column;
 }
@@ -9,8 +9,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 530px;
-  width: 530px;
+  height: 580px;
+  width: 580px;
   background-color: #282828;
   border-radius: 5px;
   border: solid;
@@ -24,7 +24,7 @@
   justify-content: center;
   align-items: center;
   margin-bottom:20px;
-  height:530px;
+  height:580px;
   width:auto;
   background-color: #282828;
   border-radius: 5px;
@@ -35,7 +35,7 @@
 
 #content-holder {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-evenly;
   width: 100%;
 }
 
@@ -67,12 +67,13 @@ button {
   margin:30px;
   color: #ffffff;
   height: 30px;
-  width: 100px;
+  width: 70%;
   background-color: #282828;
   border: solid;
   border-width: thin;
   border-color: #ffffff;
   outline: none;
+  border-radius: 5px;
 }
 
 body {
