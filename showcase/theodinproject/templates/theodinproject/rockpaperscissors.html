@@ -2,20 +2,21 @@
 
 <html>
   <head>
-
-
+    <title>Rock Paper Scissors Game | EvanPatrick.net</title>
+    {% load static %}
+    <link type="text/css" rel="stylesheet" href="{% static 'rockpaperscissors/style.css' %}">
   </head>
 
   <body>
 
-    <p1></p1><br>
+
     <div id='dashboard'>
       <div id='message'></div>
       <div id='current'></div>
       <div id='container'>
-        <button id='rock'>Rock</button>
-        <button id='paper'>Paper</button>
-        <button id='scissors'>Scissors</button>
+        <button class="btn" id='rock'>Rock</button>
+        <button class="btn" id='paper'>Paper</button>
+        <button class="btn" id='scissors'>Scissors</button>
       </div>
     </div>
     <script>
@@ -32,21 +33,21 @@
       //Takes action selected, handles css, also sets x to choice---------------
       function select(x){
         if (x === 'rock'){
-          rck.style.cssText = 'background: blue; color: white';
-          pap.style.cssText = 'background: white; color: black';
-          sci.style.cssText = 'background: white; color: black';
+          rck.classList.add("btn-on");                              //style.cssText = 'background: blue; color: white';
+          pap.classList.remove("btn-on");
+          sci.classList.remove("btn-on");
           //Go ahead and link the next logical thing to do. Link the playRound
           //function, into select. So it's one seemless interaction
           playRound(x);
         } else if (x === 'paper'){
-          pap.style.cssText = 'background: blue; color: white';
-          rck.style.cssText = 'background: white; color: black';
-          sci.style.cssText = 'background: white; color: black';
+          pap.classList.add("btn-on");
+          rck.classList.remove("btn-on");
+          sci.classList.remove("btn-on");
           playRound(x);
         } else if (x === 'scissors'){
-          sci.style.cssText = 'background: blue; color: white';
-          rck.style.cssText = 'background: white; color: black';
-          pap.style.cssText = 'background: white; color: black';
+          sci.classList.add("btn-on");
+          rck.classList.remove("btn-on");
+          pap.classList.remove("btn-on");
           playRound(x);
         } else {
           alert("ERROR no match found for choice variable in select function. Or you have not selected a choice")
@@ -63,10 +64,10 @@
       const sci = document.querySelector('#scissors');
       sci.onclick = () => select('scissors');
       //------------------------------------------------------------------------
-      //setting constants needed for score board and message--------------------
+      //creating score board and message--------------------
       const current = document.querySelector('#current');
       const choice = document.createElement('p1');
-      choice.textContent = 'Computers chose ' + computerSelection + ' last round';
+      choice.textContent = 'The computers choice will be randomly selected';
       current.appendChild(choice)
 
       const plyrScore = document.createElement('h2');
@@ -95,13 +96,13 @@
             //from random to actual choice of string -----------------------------
             if (random < 0.333){
               computerSelection = 'rock';
-              choice.textContent = 'Computers chose ' + computerSelection + ' last round';
+              choice.textContent = 'The computer chose ' + computerSelection + ' last round';
             } else if (random > 0.333 && random < 0.666){
               computerSelection = 'paper';
-              choice.textContent = 'Computers chose ' + computerSelection + ' last round';
+              choice.textContent = 'The computer chose ' + computerSelection + ' last round';
             } else {
               computerSelection = 'scissors';
-              choice.textContent = 'Computers chose ' + computerSelection + ' last round';
+              choice.textContent = 'The computer chose ' + computerSelection + ' last round';
             }
             //console.log('computerSelection is ' + computerSelection);
             //--------------------------------------------------------------------
@@ -111,7 +112,7 @@
               info.textContent = 'It was a tie';
               break;
             }
-              //All losing scenarios 
+              //All losing scenarios
               else if (computerSelection === 'rock' && playerInput === 'scissors'){
               computerScore += 1;
               compSco.textContent = 'Computer: ' + computerScore.toString();
@@ -167,111 +168,3 @@
 
 
 </html>
-<!-- <!DOCTYPE html>
-
-<html>
-  <head>
-
-
-  </head>
-
-  <body>
-
-    <p1>This is a rock paper scissors game. You play 5 rounds and the score is totaled at the end.</p1><br>
-    <br>
-    <button id='start'>Play Rock Paper Scissors</button>
-    <script>
-
-
-      function playRound (){
-        //Declare needed variables----------------------------------------------
-        let playerScore = 0;
-        let computerScore = 0;
-        let counter;
-        let rawPlayerInput;
-        let playerInput;
-        let random;
-        let computerSelection;
-
-        for (counter = 1; counter < 6; counter ++) {
-          //Normalized Player input --------------------------------------------
-          rawPlayerInput = prompt('Round ' + counter + ' Rock Paper Or Scissors?');
-          playerInput = rawPlayerInput.toLowerCase();
-
-          //Making the random computer answer ----------------------------------
-          random = Math.random();
-          console.log('Round ' + counter + ' random is ' + random);
-
-          if (random < 0.333){
-            computerSelection = 'rock';
-          } else if (random > 0.333 && random < 0.666){
-            computerSelection = 'paper';
-          } else {
-            computerSelection = 'scissors';
-          }
-          console.log('computerSelection is ' + computerSelection);
-
-          if (computerSelection === playerInput) {
-            //Generalized Tie scenario--------------------------------------------
-            alert('You both chose ' + playerInput + "! It's a tie! Therefore the round is forefiet and the round will be replayed.");
-            counter --;
-          }
-            //All losing scenarios -----------------------------------------------
-            else if (computerSelection === 'rock' && playerInput === 'scissors'){
-            alert('Rock breaks scissors. You lose :(');
-            computerScore += 1;
-          } else if (computerSelection === 'paper' && playerInput === 'rock'){
-            alert('Paper covers rock. You lose :(');
-            computerScore += 1;
-          } else if (computerSelection === 'scissors' && playerInput === 'paper'){
-            alert('Scissors cut paper. You lose :(');
-            computerScore += 1;
-          }
-            //All winning scenarios-----------------------------------------------
-            else if (playerInput === 'rock' && computerSelection === 'scissors'){
-            alert('Rock breaks scissors. You win :)');
-            playerScore += 1;
-          } else if (playerInput === 'paper' && computerSelection === 'rock'){
-            alert('Paper covers rock. You win :)');
-            playerScore += 1;
-          } else if (playerInput === 'scissors' && computerSelection === 'paper'){
-            alert('Scissors cut paper. You win :)');
-            playerScore += 1;
-          }
-            //Error Scenario------------------------------------------------------
-            else {
-            alert('Something went wrong! Your potential victory or defeat is lost to time. The round will be replayed.');
-            counter --;
-          }
-          //Showing current score before returning to begining of loop ---------------
-          alert('Current scores: Player ' + playerScore + ' Computer ' + computerScore);
-        }
-
-        //Show final Score and tell who won -------------------------------------------
-        if (playerScore > computerScore){
-          alert('You win! Final scores: Player ' + playerScore + ' Computer ' + computerScore);
-        } else{
-          alert('You lose! Final scores: Player ' + playerScore + ' Computer ' + computerScore);
-        }
-
-
-      }
-
-      const btn = document.querySelector('#start');
-      btn.onclick = () => playRound();
-
-      //let startGame = document.getElementById('start');
-      //startGame.onclick = playRound();
-
-
-    </script>
-
-
-
-  </body>
-
-
-
-
-
-</html> -->
