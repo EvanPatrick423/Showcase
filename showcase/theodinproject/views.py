@@ -31,6 +31,10 @@ def keyboardDrumKit(request):
 def etchASketch (request):
     template = loader.get_template('theodinproject/etchASketch.html')
     return render(request, 'theodinproject/etchASketch.html')
+
+def calculator (request):
+    template = loader.get_template('theodinproject/calculator.html')
+    return render(request, 'theodinproject/calculator.html')
 """
 def script(request):
     template = loader.get_template('')
