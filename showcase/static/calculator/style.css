@@ -44,15 +44,19 @@ body {
 }
 
 #calc-contain {
-  border-color: #ffffff;
-  border-style: solid;
-  border-width: thin;
   width: 90%;
   height: 500px;
   display: flex;
   justify-content: center;
   align-items: center;
 
+}
+
+#calc-body {
+  border-color: #ffffff;
+  border-style: solid;
+  border-width: thin;
+  border-radius: 5px;
 }
 
 #display {
@@ -118,9 +122,11 @@ body {
   flex-grow: 1;
   background-color: #000000;
   color: #ffffff;
+}
+
+#equals {
+  background-color: #0F5EEA;
   border-radius: 5px;
-  border-style: solid;
-  border-width: thin;
 }
 
 .o-button {
@@ -129,7 +135,7 @@ body {
   align-items: center;
   height: 50px;
   flex-grow: 1;
-  background-color: #181818;
+  background-color: #282828;
   color: #ffffff;
   border-radius: 5px;
   border-style: solid;
