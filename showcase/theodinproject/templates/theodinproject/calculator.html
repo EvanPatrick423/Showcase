@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Calculator</title>
+    <title>Calculator | EvanPatrick.net</title>
     {% load static %}
     <link type="text/css" rel="stylesheet" href="{% static 'calculator/style.css' %}">
   </head>
@@ -13,7 +13,7 @@
       </div>
 
       <div id="explain-text">
-        <p1>Hello, this project is currently under development, so keep that in mind. But feel free to see what's working and what isn't!! This project was started on January 12th 2021</p1>
+        <p1>Hello, this project is currently under development, so keep that in mind. But feel free to see what's working and what isn't!! This project was started on January 12th 2021<br>I am currently working on the basic functions such as adding and subtracting, I am hoping to be able to do all of the functions shown below.</p1>
       </div>
 
       <div id="main">
@@ -25,32 +25,44 @@
 
             <div id="buttons">
               <div id="number-buttons">
-                <div id="fourth-row">
+                <div class="row" id="sixth-row">
+                  <div class="o-button" id="">x!</div>
+                  <div class="o-button" id="">x^y</div>
+                  <div class="o-button" id="">?</div>
+                </div>
+                <div class="row" id="fifth-row">
+                  <div class="o-button" id="">tan(x)</div>
+                  <div class="o-button" id="">sin(x)</div>
+                  <div class="o-button" id="">cos(x)</div>
+                </div>
+                <div class="row" id="fourth-row">
                   <div class="n-button" id="7">7</div>
                   <div class="n-button" id="8">8</div>
                   <div class="n-button" id="9">9</div>
                 </div>
-                <div id="third-row">
+                <div class="row" id="third-row">
                   <div class="n-button" id="4">4</div>
                   <div class="n-button" id="5">5</div>
                   <div class="n-button" id="6">6</div>
                 </div>
-                <div id="second-row">
+                <div class="row" id="second-row">
                   <div class="n-button" id="1">1</div>
                   <div class="n-button" id="2">2</div>
                   <div class="n-button" id="3">3</div>
                 </div>
-                <div id="first-row">
+                <div class="row" id="first-row">
                   <div class="n-button" id="0">0</div>
                   <div class="n-button" id="decimal">. </div>
                   <div class="n-button" id="equals">=</div>
                 </div>
               </div>
               <div id="operand-buttons">
+                <div class="o-button" id="back"><=</div>
                 <div class="o-button" id="plus">+</div>
                 <div class="o-button" id="minus">-</div>
                 <div class="o-button" id="multiply">*</div>
                 <div class="o-button" id="divide">%</div>
+                <div class="o-button" id="clear">AC</div>
 
 
               </div>
@@ -61,6 +73,23 @@
     </div>
 
     <script>
+    //operate function
+    //needs to call an object that stores the operand data and the numbers while also diplaying them in sequential order in calculator display
+    function operate(operand, number1, number2) {
+      let result;
+      if (operand = "*") {
+        result = number1 * number2;
+      } else if (operand = "+") {
+        result = number1 + number2;
+      } else if (operand = "-") {
+        result = number1 - number2;
+      } else if (operand = "%") {
+        result = number1 / number2;
+      } else {
+        console.log("there was an error at the if statement of the operate function");
+      }
+    }
+
 
 
     </script>

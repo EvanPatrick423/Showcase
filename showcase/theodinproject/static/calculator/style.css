@@ -81,30 +81,19 @@ body {
 
 #number-buttons {
   display: flex;
+  justify-content: flex-start;
   flex-direction:column;
   width: 300px;
   height: auto;
-  margin-right: 15px;
+  margin-right: 5px;
 }
 
-#fourth-row {
+.row {
   display: flex;
   flex-direction: row;
-}
-
-#third-row {
-  display: flex;
-  flex-direction: row;
-}
-
-#second-row {
-  display: flex;
-  flex-direction: row;
-}
-
-#first-row {
-  display: flex;
-  flex-direction: row;
+  justify-content: space-between;
+  margin-left: 3px;
+  margin-right: 3px;
 }
 
 #operand-buttons {
@@ -119,13 +108,31 @@ body {
   justify-content: center;
   align-items: center;
   height: 50px;
-  flex-grow: 1;
+  flex: 1 1 0;
   background-color: #000000;
   color: #ffffff;
+  margin: 3px;
+}
+
+.n-button:hover {
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  height: 50px;
+  flex: 1 1 0;
+  background-color: #484848;
+  color: #ffffff;
+  border-radius: 5px;
+  margin: 3px;
 }
 
 #equals {
   background-color: #0F5EEA;
+  border-radius: 5px;
+}
+
+#equals:hover {
+  background-color: #55cfca;
   border-radius: 5px;
 }
 
@@ -134,8 +141,22 @@ body {
   justify-content: center;
   align-items: center;
   height: 50px;
-  flex-grow: 1;
+  flex: 1 1 0;
   background-color: #282828;
+  color: #ffffff;
+  border-radius: 5px;
+  border-style: solid;
+  border-width: thin;
+  margin: 3px;
+}
+
+.o-button:hover {
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  height: 50px;
+  flex: 1 1 0;
+  background-color: #000000;
   color: #ffffff;
   border-radius: 5px;
   border-style: solid;
