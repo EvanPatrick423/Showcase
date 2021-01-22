@@ -1,110 +1,130 @@
-//-----Set up needed Variables
-const calcButtons = document.querySelectorAll(".button");
-console.log(calcButtons);
+const numberButtons = document.querySelectorAll("[data-number]");
+const operatorButtons = document.querySelectorAll("[data-operator]");
+const equalsButton = document.querySelector("[data-equals]");
+const clearButton = document.querySelector("[data-clear]");
+const deleteButton = document.querySelector("[data-delete]");
+const pointButton = document.querySelector("[data-point]");
+const screen = document.querySelector("[data-screen]");
 
-//-----operation functions
-function add(a, b) {
-    return a + b;
+let firstOperand = "";
+let secondOperand = "";
+let currentOperation = null;
+let shouldResetScreen = false;
+
+window.addEventListener("keydown", setInput);
+equalsButton.addEventListener("click", evaluate);
+clearButton.addEventListener("click", clear);
+deleteButton.addEventListener("click", deleteNumber);
+pointButton.addEventListener("click", appendPoint);
+
+numberButtons.forEach((button) =>
+  button.addEventListener("click", () => appendNumber(button.textContent))
+);
+
+operatorButtons.forEach((button) =>
+  button.addEventListener("click", () => setOperation(button.textContent))
+);
+
+function appendNumber(number) {
+  if (screen.textContent === "0" || shouldResetScreen) resetScreen();
+  screen.textContent += number;
 }
 
-function subtract(a, b) {
-    return a - b;
+function resetScreen() {
+  screen.textContent = "";
+  shouldResetScreen = false;
+}
+
+function clear() {
+  screen.textContent = "0";
+  firstOperand = "";
+  secondOperand = "";
+  currentOperation = null;
+}
+
+function appendPoint() {
+  if (shouldResetScreen) resetScreen();
+  if (screen.textContent === "") screen.textContent = "0";
+  if (screen.textContent.includes(".")) return;
+  screen.textContent += ".";
+}
+
+function deleteNumber() {
+  screen.textContent = screen.textContent.toString().slice(0, -1);
+}
+
+function setOperation(operator) {
+  if (currentOperation !== null) evaluate();
+  firstOperand = screen.textContent;
+  currentOperation = operator;
+  shouldResetScreen = true;
+}
+
+function evaluate() {
+  if (currentOperation === null || shouldResetScreen) return;
+  if (currentOperation === "÷" && screen.textContent === "0") {
+    alert("You can't divide by 0!");
+    clear();
+    return;
+  }
+  secondOperand = screen.textContent;
+  screen.textContent = roundResult(
+    operate(currentOperation, firstOperand, secondOperand)
+  );
+  currentOperation = null;
+}
+
+function roundResult(number) {
+  return Math.round(number * 1000) / 1000;
+}
+
+function setInput(e) {
+  if (e.key >= 0 && e.key <= 9) appendNumber(e.key);
+  if (e.key === ".") appendPoint();
+  if (e.key === "=" || e.key === "Enter") evaluate();
+  if (e.key === "Backspace") deleteNumber();
+  if (e.key === "Escape") clear();
+  if (e.key === "+" || e.key === "-" || e.key === "*" || e.key === "/")
+    setOperation(convertOperator(e.key));
+}
+
+function convertOperator(keyboardOperator) {
+  if (keyboardOperator === "/") return "÷";
+  if (keyboardOperator === "*") return "×";
+  if (keyboardOperator === "-") return "−";
+  if (keyboardOperator === "+") return "+";
+}
+
+function add(a, b) {
+  return a + b;
+}
+
+function substract(a, b) {
+  return a - b;
 }
 
 function multiply(a, b) {
-    return a * b;
+  return a * b;
 }
 
 function divide(a, b) {
-    return a / b;
+  return a / b;
 }
 
-function factorial(a) {
-	if (a == 0) return 1;
-	let product = 1;
-	for (let i = a; i > 0; i--) {
-	  product *= i;
-	}
-	return product;
-}
-
-function exponent(a, b) {
-	return Math.pow(a, b);
-}
-
-//------------------------------------------------------------
-//------Display numbers when typing
-function collect(x) {
-  //console.log(x);
-  let displayText = document.getElementById('displaycurrent').textContent;
-  switch(x) {
-    case '0':
-        displayText = displayText + '0';
-        break;
-    case '1':
-          displayText = displayText + '1';
-          break;
-    case '2':
-          displayText = displayText + '2';
-          break;
-    case '3':
-          displayText = displayText + '3';
-          break;
-    case '4':
-          displayText = displayText + '4';
-          break;
-    case '5':
-          displayText = displayText + '5';
-          break;
-    case '6':
-          displayText = displayText + '6';
-          break;
-    case '7':
-          displayText = displayText + '7';
-          break;
-    case '8':
-          displayText = displayText + '8';
-          break;
-    case '9':
-          displayText = displayText + '9';
-          break;
-    case 'decimal':
-          if (displayText.length === 0){
-            displayText = displayText + '0.'
-          } else {
-            displayText = displayText + '.';
-          }
-          break;
-    case 'plus':
-          displayText = displayText + ' + ';
-          break;
-    case 'minus':
-          displayText = displayText + ' - ';
-          break;
-    case 'multiply':
-          displayText = displayText + ' * ';
-          break;
-    case 'divide':
-          displayText = displayText + ' / ';
-          break;
-    case 'clear':
-          displayText = '';
-          break;
+function operate(operator, a, b) {
+  a = Number(a);
+  b = Number(b);
+  switch (operator) {
+    case "+":
+      return add(a, b);
+    case "−":
+      return substract(a, b);
+    case "×":
+      return multiply(a, b);
+    case "÷":
+      if (b === 0) return null;
+      else return divide(a, b);
+    default:
+      return null;
   }
-  displaycurrent.textContent = displayText;
 }
-
-
-
-//------Blank Object to use in math
-
-const object = {
-  name: 'dude',
-  height: '5ft',
-}
-console.log(object.name)
-
-//------Add event listeners to buttons
-calcButtons.forEach(button => button.addEventListener('click', function() {
-  collect(button['id']);
-}))

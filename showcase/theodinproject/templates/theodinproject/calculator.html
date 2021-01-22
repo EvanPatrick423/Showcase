@@ -1,79 +1,48 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
     <title>Calculator | EvanPatrick.net</title>
     {% load static %}
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link type="text/css" rel="stylesheet" href="{% static 'calculator/style.css' %}">
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto&display=swap"
+      rel="stylesheet"
+    />
   </head>
-
   <body>
-    <div id="view">
-      <div id="header">
-        <h1>Calculator Page</h1>
-      </div>
+    <div id="header">
+      <h1>Calculator Page</h1>
+    </div>
+    <div class="calculator">
+      <div class="screen" data-screen>0</div>
+      <div class="buttons-grid">
+        <button class="btn btn-red span-2" data-clear>CLEAR</button>
+        <button class="btn btn-blue span-2" data-delete>DELETE</button>
+        <div id='number'></div>
+        <div id='operator'><div>
+        <button class="btn" data-number>7</button>
+        <button class="btn" data-number>8</button>
+        <button class="btn" data-number>9</button>
+        <button class="btn" data-operator>÷</button>
 
-      <div id="explain-text">
-        <p1>Hello, this project is currently under development, so keep that in mind. But feel free to see what's working and what isn't!! This project was started on January 12th 2021<br>I am currently working on the basic functions such as adding and subtracting, I am hoping to be able to do all of the functions shown below.</p1>
-      </div>
+        <button class="btn" data-number>4</button>
+        <button class="btn" data-number>5</button>
+        <button class="btn" data-number>6</button>
+        <button class="btn" data-operator>×</button>
 
-      <div id="main">
-        <div id="calc-contain">
-          <div id="calc-body">
-            <div id="display">
-              <div id="display-previous">previous function result</div>
-              <div id="displaycurrent"></div>
-            </div>
+        <button class="btn" data-number>1</button>
+        <button class="btn" data-number>2</button>
+        <button class="btn" data-number>3</button>
+        <button class="btn" data-operator>−</button>
 
-            <div id="buttons">
-              <div id="number-buttons">
-                <div class="row" id="sixth-row">
-                  <div class="o-button" id="">x!</div>
-                  <div class="o-button" id="">x^y</div>
-                  <div class="o-button" id="">?</div>
-                </div>
-                <div class="row" id="fifth-row">
-                  <div class="o-button" id="">tan(x)</div>
-                  <div class="o-button" id="">sin(x)</div>
-                  <div class="o-button" id="">cos(x)</div>
-                </div>
-                <div class="row" id="fourth-row">
-                  <div class="button n-button" id="7">7</div>
-                  <div class="button n-button" id="8">8</div>
-                  <div class="button n-button" id="9">9</div>
-                </div>
-                <div class="row" id="third-row">
-                  <div class="button n-button" id="4">4</div>
-                  <div class="button n-button" id="5">5</div>
-                  <div class="button n-button" id="6">6</div>
-                </div>
-                <div class="row" id="second-row">
-                  <div class="button n-button" id="1">1</div>
-                  <div class="button n-button" id="2">2</div>
-                  <div class="button n-button" id="3">3</div>
-                </div>
-                <div class="row" id="first-row">
-                  <div class="button n-button" id="0">0</div>
-                  <div class="button n-button" id="decimal">. </div>
-                  <div class="button o-button" id="equals">=</div>
-                </div>
-              </div>
-              <div id="operand-buttons">
-                <div class="button o-button" id="back"><=</div>
-                <div class="button o-button" id="plus">+</div>
-                <div class="button o-button" id="minus">-</div>
-                <div class="button o-button" id="multiply">*</div>
-                <div class="button o-button" id="divide">%</div>
-                <div class="button o-button" id="clear">AC</div>
-
-
-              </div>
-            </div>
-          </div>
-        </div>
+        <button class="btn" data-point>.</button>
+        <button class="btn" data-number>0</button>
+        <button class="btn" data-equals>=</button>
+        <button class="btn" data-operator>+</button>
       </div>
     </div>
-
     <script src="{% static 'calculator/calculator.js' %}"></script>
-
-  <body>
+  </body>
 </html>
