@@ -1,3 +1,4 @@
+//-----Setting Up EventListener
 const numberButtons = document.querySelectorAll("[data-number]");
 const operatorButtons = document.querySelectorAll("[data-operator]");
 const equalsButton = document.querySelector("[data-equals]");
@@ -6,11 +7,14 @@ const deleteButton = document.querySelector("[data-delete]");
 const pointButton = document.querySelector("[data-point]");
 const screen = document.querySelector("[data-screen]");
 
+
 let firstOperand = "";
 let secondOperand = "";
 let currentOperation = null;
 let shouldResetScreen = false;
 
+//---------------------------------------------------------
+//-----EventListener functions
 window.addEventListener("keydown", setInput);
 equalsButton.addEventListener("click", evaluate);
 clearButton.addEventListener("click", clear);
@@ -25,16 +29,24 @@ operatorButtons.forEach((button) =>
   button.addEventListener("click", () => setOperation(button.textContent))
 );
 
+
+//-----Screen Functions
+//Add number to screen
 function appendNumber(number) {
-  if (screen.textContent === "0" || shouldResetScreen) resetScreen();
+  //console.log('appendNumber function started')
+  if (screen.textContent === "0" || shouldResetScreen) {
+    console.log('screen reset when appending ' + number);
+    resetScreen();
+  }
   screen.textContent += number;
 }
-
+//Clear Screen Text and then resets shouldResetScreen variable
 function resetScreen() {
   screen.textContent = "";
   shouldResetScreen = false;
+  console.log('resetScreen currently false');
 }
-
+//Clear Screen Function, clears screen and resets screen text
 function clear() {
   screen.textContent = "0";
   firstOperand = "";
@@ -42,35 +54,50 @@ function clear() {
   currentOperation = null;
 }
 
+//Add Point to Screen if Not already there
 function appendPoint() {
   if (shouldResetScreen) resetScreen();
   if (screen.textContent === "") screen.textContent = "0";
-  if (screen.textContent.includes(".")) return;
+  if (screen.textContent.includes(".")) {
+    //console.log('already has . on screen')
+    return;
+  }
   screen.textContent += ".";
 }
 
+//Delete last number on screen
 function deleteNumber() {
   screen.textContent = screen.textContent.toString().slice(0, -1);
 }
-
+//Set operator
 function setOperation(operator) {
-  if (currentOperation !== null) evaluate();
-  firstOperand = screen.textContent;
-  currentOperation = operator;
-  shouldResetScreen = true;
+  console.log(operator);
+  if (currentOperation !== null) evaluate(); //if already a operator stored evaluate operation and return result
+  firstOperand = screen.textContent;//set first number
+  currentOperation = operator;//set operator
+  if (operator !== 'x!') {
+    shouldResetScreen = true;
+    console.log('resetscreen is set to true');
+  }
 }
 
 function evaluate() {
-  if (currentOperation === null || shouldResetScreen) return;
-  if (currentOperation === "÷" && screen.textContent === "0") {
+  if (currentOperation === null || shouldResetScreen) {
+    console.log('evaluate did nothing');
+    return;//if operation is not already set return nothing and wait for operation
+  }
+  if (currentOperation === "÷" && screen.textContent === "0") {//does it divide by zero check
     alert("You can't divide by 0!");
-    clear();
+    clear();//clears all data stored so no divide by zero accidentally
     return;
   }
+  //If Passes, Take Second number from screen and do operation
   secondOperand = screen.textContent;
+  console.log('secondOperand = ' + secondOperand)
   screen.textContent = roundResult(
     operate(currentOperation, firstOperand, secondOperand)
   );
+  //clear variables after operation
   currentOperation = null;
 }
 
@@ -84,7 +111,7 @@ function setInput(e) {
   if (e.key === "=" || e.key === "Enter") evaluate();
   if (e.key === "Backspace") deleteNumber();
   if (e.key === "Escape") clear();
-  if (e.key === "+" || e.key === "-" || e.key === "*" || e.key === "/")
+  if (e.key === "+" || e.key === "-" || e.key === "*" || e.key === "/" || e.key ==="x!")
     setOperation(convertOperator(e.key));
 }
 
@@ -93,8 +120,12 @@ function convertOperator(keyboardOperator) {
   if (keyboardOperator === "*") return "×";
   if (keyboardOperator === "-") return "−";
   if (keyboardOperator === "+") return "+";
+  if (keyboardOperator === "x!") {
+    console.log('x! converted to !');
+    return "!";
+  }
 }
-
+//-----Math Operation Functions
 function add(a, b) {
   return a + b;
 }
@@ -111,6 +142,16 @@ function divide(a, b) {
   return a / b;
 }
 
+function factorial(a) {
+  console.log('factorial function used')
+	if (a == 0) return 1;
+	let product = 1;
+	for (let i = a; i > 0; i--) {
+	  product *= i;
+	}
+	return product;
+}
+//-----Decides What Math Operation to Use
 function operate(operator, a, b) {
   a = Number(a);
   b = Number(b);
@@ -122,8 +163,14 @@ function operate(operator, a, b) {
     case "×":
       return multiply(a, b);
     case "÷":
-      if (b === 0) return null;
-      else return divide(a, b);
+      if (b === 0) {
+        return null;
+      } else {
+        return divide(a, b);
+      }
+    case "x!":
+      console.log('case ! was activated')
+      return factorial(a);
     default:
       return null;
   }
