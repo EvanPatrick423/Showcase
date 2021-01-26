@@ -143,13 +143,18 @@ function divide(a, b) {
 }
 
 function factorial(a) {
-  console.log('factorial function used')
+  console.log('factorial function used');
 	if (a == 0) return 1;
 	let product = 1;
 	for (let i = a; i > 0; i--) {
 	  product *= i;
 	}
 	return product;
+}
+
+function power(a, b) {
+  console.log('power function used');
+  return Math.pow(a, b);
 }
 //-----Decides What Math Operation to Use
 function operate(operator, a, b) {
@@ -169,8 +174,11 @@ function operate(operator, a, b) {
         return divide(a, b);
       }
     case "x!":
-      console.log('case ! was activated')
+      console.log('case ! was activated');
       return factorial(a);
+    case "x^y":
+      console.log('case x^y was activated');
+      return power(a,b);
     default:
       return null;
   }
