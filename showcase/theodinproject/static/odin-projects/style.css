@@ -1,0 +1,27 @@
+:root {
+  --body: #000000;
+  --font: #ffffff;
+}
+
+*::after {
+  padding: 0px;
+  margin: 0px;
+}
+
+#viewport {
+  background-color: var(--body);
+  color: var(--font)
+}
+
+#add-container {
+  background-color: #000000;
+  color: var(--body_);
+  border-style: solid;
+  border-color: var(--font);
+  border-width: thin;
+}
+
+.clicked-button {
+  background-color: #000000;
+  color: #ffffff;
+}

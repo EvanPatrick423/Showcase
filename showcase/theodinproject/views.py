@@ -35,6 +35,11 @@ def etchASketch (request):
 def calculator (request):
     template = loader.get_template('theodinproject/calculator.html')
     return render(request, 'theodinproject/calculator.html')
+
+def objectConstructor (request):
+    template = loader.get_template('theodinproject/odin-projects/object-constructor.html')
+    return render(request, 'theodinproject/odin-projects/object-constructor.html')
+
 """
 def script(request):
     template = loader.get_template('')
