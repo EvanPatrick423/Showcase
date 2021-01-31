@@ -3,13 +3,13 @@
   function createGrid(z) {
     for (let i = 0; i < z; i ++){
       const row = document.createElement('div');
-      row.style.cssText = 'flex-grow:1 ; display:flex ;';
+      row.style.cssText = 'flex:1 1 0 ; display:flex ;';
       board.appendChild(row)
 
       for (let x = 0; x < z; x ++){
         const gridItem = document.createElement('div');
-        gridItem.classList.add("grid-item")
-        row.appendChild(gridItem)
+        gridItem.classList.add("grid-item");
+        row.appendChild(gridItem);
       }
     }
   }
@@ -44,7 +44,6 @@
     while (container.firstChild) {
         container.removeEventListener('mousedown', drawOnClick);
         container.removeEventListener('mouseenter', drawWhileClicked);
-        //container.lastChild = null;
         container.removeChild(board.lastChild);
     }
   }
