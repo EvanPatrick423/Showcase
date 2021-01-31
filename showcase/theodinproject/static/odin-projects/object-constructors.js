@@ -54,12 +54,14 @@ inputData.addEventListener('click', function() {
   //console.log('add title was ' + addTitle + ' at function go')
 
   //calling function to create new object
-  newBook = new Book(addTitle, addAuthor, Number(addPages), haveRead);
+  const newBook = new Book(addTitle, addAuthor, Number(addPages), haveRead);
   //log new addition
-  newBook.sayTitle();
-  newBook.sayAuthor();
-  newBook.sayPages();
-  newBook.sayHaveRead();
+  console.log(newBook.info());
+
+  //newBook.sayTitle();
+  //newBook.sayAuthor();
+  //newBook.sayPages();
+  //newBook.sayHaveRead();
 });
 
 //-------Making the Book Object --------------------
@@ -70,6 +72,12 @@ function Book (Title, Author, Pages, HaveRead)  {
   this.Author = Author;
   this.Pages = Pages;
   this.HaveRead = HaveRead;
+
+  const str = Title + ' by ' + Author + ' has ' + Pages + ' pages. Have read? ' + HaveRead;
+
+  this.info = function() {
+    return (str);
+  }
 
   this.sayTitle = function() {
     console.log('the title of the book is ' + Title);
@@ -91,7 +99,7 @@ function Book (Title, Author, Pages, HaveRead)  {
 }
 
 
-//---------------------Search Code----------------------------
+//---------------------Search Function Code----------------------------
 
 
 //Make constants Using query Selector
