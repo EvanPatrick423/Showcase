@@ -35,7 +35,7 @@ operatorButtons.forEach((button) =>
 function appendNumber(number) {
   //console.log('appendNumber function started')
   if (screen.textContent === "0" || shouldResetScreen) {
-    console.log('screen reset when appending ' + number);
+    //console.log('screen reset when appending ' + number);
     resetScreen();
   }
   screen.textContent += number;
@@ -44,7 +44,7 @@ function appendNumber(number) {
 function resetScreen() {
   screen.textContent = "";
   shouldResetScreen = false;
-  console.log('resetScreen currently false');
+  //console.log('resetScreen currently false');
 }
 //Clear Screen Function, clears screen and resets screen text
 function clear() {

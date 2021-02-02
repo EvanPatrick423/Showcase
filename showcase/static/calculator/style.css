@@ -6,12 +6,12 @@
   --btn: #000000;
   --btn-hover: #7d857f;
   --btn-active: #ccc;
-  --btn-red: #faa;
+  --btn-red: #d4616d;
   --btn-red-hover: #000000;
-  --btn-red-active: #d88;
-  --btn-blue: #aaf;
+  --btn-red-active: #d4616d;
+  --btn-blue: #8aa1ed;
   --btn-blue-hover: #000000;
-  --btn-blue-active: #88d;
+  --btn-blue-active: #8aa1ed;
 }
 
 *,
