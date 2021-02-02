@@ -58,10 +58,7 @@ inputData.addEventListener('click', function() {
   //log new addition
   console.log(newBook.info());
 
-  //newBook.sayTitle();
-  //newBook.sayAuthor();
-  //newBook.sayPages();
-  //newBook.sayHaveRead();
+
 });
 
 //-------Making the Book Object --------------------
@@ -73,7 +70,7 @@ function Book (Title, Author, Pages, HaveRead)  {
   this.Pages = Pages;
   this.HaveRead = HaveRead;
 
-  const str = Title + ' by ' + Author + ' has ' + Pages + ' pages. Have read? ' + HaveRead;
+  const str = Title + ' by ' + Author + ' has ' + Pages + ' pages. Have I read? ' + HaveRead;
 
   this.info = function() {
     return (str);
@@ -106,18 +103,53 @@ function Book (Title, Author, Pages, HaveRead)  {
 const searchData = document.querySelector('[data-search]');
 const searchSelector = document.querySelectorAll('.search-selector');
 
-//Event Listener of Search By Buttons to search SelectFunction
+
+//Event Listener of Search-By Buttons
 searchSelector.forEach((selector) =>
-  selector.addEventListener('click', () => searchSelect(selector.name))
-);
+  selector.addEventListener('click', () => searchSelect(selector)
+));
+//Event Listener on the search button
+searchData.addEventListener('click', () =>search(haveRead))
 
 function searchSelect(selector) {
-  console.log('Selector was ' + selector +' at searchSelect.');
+  clearSearchSelect();
+
+  console.log('Selector was ' + selector.name +' at searchSelect');
   //const selection =
-  selector.classList.add('clicked-button')
+  selector.classList.add('clicked-button');
 }
 
-function search(searchSelector, searchData) {
-  console.log("selector is " + searchSelector + ' at search function start');
-  console.log("data is " + searchData + ' at search function start');
+function clearSearchSelect() {
+  searchSelector.forEach((selector) =>
+  selector.classList.remove('clicked-button'))
+}
+
+function search(haveRead) {
+  //Grabbing needed Info to start search
+  const searchSelected = document.querySelector('.clicked-button');
+  //title, author, pages, and haveRead
+  const searchTitle = document.getElementById('add-book-title');
+  const searchAuthor = document.getElementById('add-author-name');
+  const searchPages = document.getElementById('add-book-pages');
+  const searchHaveRead =  document.getElementById('add-have-read');
+
+  console.log('searchHaveRead was ' + searchHaveRead.id + ' at search function');
+  console.log("searchSelected is " + searchSelected.name + ' at search function start');
+
+  //console.log('searchTitle name is ' + searchTitle.name)
+  if (searchSelected.name === searchTitle.name) {
+    console.log('searchSelected === searchTitle');
+
+  } else if (searchSelected.name === searchAuthor.name) {
+    console.log('searchSelected === searchAuthor');
+
+  } else if (searchSelected.name === searchPages.name) {
+    console.log('searchSelected === searchPages');
+
+  } else if (searchSelected.name === searchHaveRead.id) {
+    console.log('searchSelected === searchHaveRead');
+
+  } else {
+    console.log('there was a problem matching the item to search');
+  }
 }
