@@ -1,38 +1,15 @@
+//--------- Setting up the Library array ----------
+let library = [];
 
-//-----------Have Read Input ---------------------
-
-//Defining true and false radio buttons
-const truRead = document.getElementById('true');
-const flsRead = document.getElementById('false');
-
-//Define variable to store boolean
-let haveRead;
-
-//true radio button click function
-truRead.addEventListener('click', function(trueCount) {
-  haveRead = true;
-})
-//false radio button click function
-flsRead.addEventListener('click', function() {
-  haveRead = false;
-})
-
-//---------------Book Input Data -------------
-
-//Define the Books data inputs
-const bookData = document.querySelectorAll("[data-input]");
-
-//Event Listener to initiate clear function
-bookData.forEach((input) =>
-  input.addEventListener("click", () => clear(input))
-);
-
-//Clear function clears input boxes on click ;)
-function clear(input) {
-  input.value = '';
+//--------- Add Current Book to Library array ----------
+function addToLibrary (newBook) {
+  console.log(newBook)
+  library.push(newBook);
+  console.log('library is ' + library + ' after new book addtion');
 }
 
-//---------------Add book Input Button -------------
+
+//--------------- Add book Input Button -------------
 
 //defining add book button
 const inputData = document.querySelector('[data-write]');
@@ -44,49 +21,35 @@ inputData.addEventListener('click', function() {
   const addAuthor = document.getElementById('add-author-name').value;
   const addPages = document.getElementById('add-book-pages').value;
 
-  //--------Alert and Confirm
+  //Alert and Confirm
   //alert('Are you sure you want to want to add this book');
 
   //-----title: blah
   //-----Author: blah
   //-----etc
 
-  //console.log('add title was ' + addTitle + ' at function go')
-
   //calling function to create new object
   const newBook = new Book(addTitle, addAuthor, Number(addPages), haveRead);
   //log new addition
   console.log(newBook.info());
 
+  addToLibrary(newBook);
 
 });
 
-//-------Making the Book Object --------------------
+//------- Making the Book Object --------------------
 
 function Book (Title, Author, Pages, HaveRead)  {
 
-  this.Title = Title;
-  this.Author = Author;
-  this.Pages = Pages;
-  this.HaveRead = HaveRead;
+  this.title = Title;
+  this.author = Author;
+  this.pages = Pages;
+  this.haveRead = HaveRead;
 
-  const str = Title + ' by ' + Author + ' has ' + Pages + ' pages. Have I read? ' + HaveRead;
+  const str = 'the book is titled ' + Title + ' written by ' + Author + ', has ' + Pages + ' pages. Have I read? ' + HaveRead;
 
   this.info = function() {
     return (str);
-  }
-
-  this.sayTitle = function() {
-    console.log('the title of the book is ' + Title);
-  }
-  this.sayAuthor = function() {
-    console.log('the author of the book is ' + Author);
-  }
-  this.sayPages = function() {
-    console.log('the pages of the book is ' + Pages);
-  }
-  this.sayHaveRead = function() {
-    console.log('Have you read before? ' + HaveRead);
   }
 
   console.log('Book function ran');
@@ -94,6 +57,47 @@ function Book (Title, Author, Pages, HaveRead)  {
   //Do I need to return if I'm just setting variable?
   //return(Title, Author, Pages, HaveRead)
 }
+
+//--------------- Book Input Data Boxes -------------
+
+//Define the Books data inputs
+const bookData = document.querySelectorAll("[data-input]");
+
+//Event Listener to initiate clear function
+bookData.forEach((input) =>
+  input.addEventListener("click", () => clear(input))
+);
+
+//Clear function clears input boxes on click ;)
+function clear(input) {
+  if (input.classList.contains('used')) return
+  else {
+    input.classList.add('used');
+    input.value = '';
+  }
+
+}
+
+//----------- Have Read Input Field ---------------------
+
+//Defining true and false radio buttons
+const truRead = document.getElementById('true');
+const flsRead = document.getElementById('false');
+
+//Define variable to store boolean
+let haveRead;
+
+
+
+//true radio button click function
+truRead.addEventListener('click', function() {
+  haveRead = true;
+})
+//false radio button click function
+flsRead.addEventListener('click', function() {
+  haveRead = false;
+})
+
 
 
 //---------------------Search Function Code----------------------------
@@ -138,7 +142,12 @@ function search(haveRead) {
 
   //console.log('searchTitle name is ' + searchTitle.name)
   if (searchSelected.name === searchTitle.name) {
-    console.log('searchSelected === searchTitle');
+    console.log('Searched for title');
+    console.log('searchTitle value is ' + searchTitle.value);
+    for (x = 0; x < library.length; x++) {
+      console.log('library item title is ' + library[x].title);
+    }
+
 
   } else if (searchSelected.name === searchAuthor.name) {
     console.log('searchSelected === searchAuthor');
@@ -152,4 +161,9 @@ function search(haveRead) {
   } else {
     console.log('there was a problem matching the item to search');
   }
+}
+
+//----------- Match function -----------------------------------
+function match(book) {
+  console.log('book in match function is ' + book)
 }
