@@ -1,13 +1,61 @@
 //--------- Setting up the Library array ----------
-let library = [];
+
+let library = JSON.parse(localStorage.getItem('localLibrary'));
+
+if (library === null) {
+  library = [];
+  //console.log(library);
+}
+
+ /*
+for (x=0; x<library.length; x++) {
+  console.log(library[x]);
+}
+ */
+
 
 //--------- Add Current Book to Library array ----------
 function addToLibrary (newBook) {
-  console.log(newBook)
+  console.log(newBook);
+  console.log('library is ' + library + ' at addToLibrary function');
   library.push(newBook);
-  console.log('library is ' + library + ' after new book addtion');
+
+  if(storageAvailable('localStorage')) {
+    localStorage.setItem('localLibrary', JSON.stringify(library));
+  }
+
 }
 
+//------------ Clear Local Storage Function -----------
+clearStored = document.getElementById('storage-clear');
+
+clearStored.addEventListener('click', () => localStorage.clear());
+
+//------------ Can Use Local Storage Function -----------
+function storageAvailable(type) {
+    var storage;
+    try {
+        storage = window[type];
+        var x = '__storage_test__';
+        storage.setItem(x, x);
+        storage.removeItem(x);
+        return true;
+    }
+    catch(e) {
+        return e instanceof DOMException && (
+            // everything except Firefox
+            e.code === 22 ||
+            // Firefox
+            e.code === 1014 ||
+            // test name field too, because code might not be present
+            // everything except Firefox
+            e.name === 'QuotaExceededError' ||
+            // Firefox
+            e.name === 'NS_ERROR_DOM_QUOTA_REACHED') &&
+            // acknowledge QuotaExceededError only if there's something already stored
+            (storage && storage.length !== 0);
+    }
+}
 
 //--------------- Add book Input Button -------------
 
@@ -21,7 +69,7 @@ inputData.addEventListener('click', function() {
   const addAuthor = document.getElementById('add-author-name').value;
   const addPages = document.getElementById('add-book-pages').value;
 
-  //Alert and Confirm
+  //Alert and Confirm  [to do]
   //alert('Are you sure you want to want to add this book');
 
   //-----title: blah
@@ -118,8 +166,8 @@ searchData.addEventListener('click', () =>search(haveRead))
 function searchSelect(selector) {
   clearSearchSelect();
 
-  console.log('Selector was ' + selector.name +' at searchSelect');
-  //const selection =
+  //console.log('Selector was ' + selector.name +' at searchSelect function');
+
   selector.classList.add('clicked-button');
 }
 
@@ -130,37 +178,69 @@ function clearSearchSelect() {
 
 function search(haveRead) {
   //Grabbing needed Info to start search
-  const searchSelected = document.querySelector('.clicked-button');
-  //title, author, pages, and haveRead
+
+  const searchSelected = document.querySelector('.clicked-button'); //which search field is selected?
+
+  //title, author, pages, and haveRead values respectiveley
   const searchTitle = document.getElementById('add-book-title');
   const searchAuthor = document.getElementById('add-author-name');
   const searchPages = document.getElementById('add-book-pages');
-  const searchHaveRead =  document.getElementById('add-have-read');
+  const searchHaveRead = document.getElementById('add-have-read')
+  //need to look at one before you play with it?
+  //remember to find the exact property you need using . notation or []
 
-  console.log('searchHaveRead was ' + searchHaveRead.id + ' at search function');
-  console.log("searchSelected is " + searchSelected.name + ' at search function start');
+  //console.log("searchSelected is " + searchSelected + ' at search function start');
+  //console.log('searchTitle is ' + searchTitle + ' at search function start')
+  //console.log('searchAuthor is ' + searchAuthor + ' at search function start')
+  //console.log('searchPages is ' + searchPages + ' at search function start')
+  console.log('searchHaveRead was ' + haveRead + ' at search function start');
 
-  //console.log('searchTitle name is ' + searchTitle.name)
+
+
   if (searchSelected.name === searchTitle.name) {
     console.log('Searched for title');
-    console.log('searchTitle value is ' + searchTitle.value);
     for (x = 0; x < library.length; x++) {
-      console.log('library item title is ' + library[x].title);
+      if (searchTitle.value === library[x].title) {
+        console.log('matched library item ' + x + "'s title. Its " + library[x].title);
+      } else {
+        console.log('not a match match, title');
+      }
     }
-
-
   } else if (searchSelected.name === searchAuthor.name) {
-    console.log('searchSelected === searchAuthor');
-
+    console.log('Searched for author');
+    for (x = 0; x < library.length; x++) {
+      if (searchAuthor.value === library[x].author) {
+        console.log('matched library item ' + x + "'s author. It's " + library[x].author);
+      } else {
+        console.log('not a match, author');
+      }
+    }
   } else if (searchSelected.name === searchPages.name) {
-    console.log('searchSelected === searchPages');
 
+    console.log('Searched for pages');
+    //console.log(searchPages.value)
+    for (x = 0; x < library.length; x++) {
+      //console.log(library[x].pages);
+      if (Number(searchPages.value) === library[x].pages) {
+        console.log('matched library item ' + x + "'s page number. It's " + library[x].pages);
+      } else {
+        console.log('not a match, pages');
+      }
+    }
   } else if (searchSelected.name === searchHaveRead.id) {
-    console.log('searchSelected === searchHaveRead');
+    console.log('Searched for have read');
+    for (x = 0; x < library.length; x++) {
 
+      if (haveRead === library[x].haveRead) {
+        console.log('matched library item ' + x + "'s title is " + library[x].title);
+      } else {
+        console.log('not a match, haveRead');
+      }
+    }
   } else {
     console.log('there was a problem matching the item to search');
   }
+
 }
 
 //----------- Match function -----------------------------------
