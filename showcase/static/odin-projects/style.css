@@ -10,7 +10,9 @@
 
 #viewport {
   background-color: var(--body);
-  color: var(--font)
+  color: var(--font);
+  display: flex;
+  flex-direction: row;
 }
 
 #add-container {
@@ -21,6 +23,45 @@
   border-width: thin;
 }
 
+#screen {
+  height: 200px;
+  width: 70%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.tileBack {
+  background-color: #484848;
+  height: 90%;
+  width: 30%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.book-info {
+  background-color: var(--body);
+  color:var(--font);
+  height:30px;
+  width: 90%;
+  margin-bottom: 10px;
+}
+
+.bookAuthor {
+  background-color: var(--body);
+  color:var(--font);
+  height:10px;
+  width: 70px;
+  margin-bottom: 20px;
+}
+
+.bookPages {
+  background-color: var(--body);
+  color:var(--font);
+  height:10px;
+  width: 70px;
+  margin-bottom: 20px;
+}
 .clicked-button {
   background-color: #000000;
   color: #ffffff;

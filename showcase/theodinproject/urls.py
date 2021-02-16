@@ -13,5 +13,4 @@ urlpatterns = [
     path('etchASketch', views.etchASketch, name='etchASketch'),
     path('calculator', views.calculator, name='calculator'),
     path('object-constructor', views.objectConstructor, name='object-constructor'),
-    #path('script', views.script, name='script')
 ]

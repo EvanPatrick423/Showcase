@@ -7,11 +7,11 @@ if (library === null) {
   //console.log(library);
 }
 
- /*
+
 for (x=0; x<library.length; x++) {
   console.log(library[x]);
 }
- */
+
 
 
 //--------- Add Current Book to Library array ----------
@@ -30,6 +30,7 @@ function addToLibrary (newBook) {
 clearStored = document.getElementById('storage-clear');
 
 clearStored.addEventListener('click', () => localStorage.clear());
+
 
 //------------ Can Use Local Storage Function -----------
 function storageAvailable(type) {
@@ -201,9 +202,10 @@ function search(haveRead) {
     console.log('Searched for title');
     for (x = 0; x < library.length; x++) {
       if (searchTitle.value === library[x].title) {
-        console.log('matched library item ' + x + "'s title. Its " + library[x].title);
+        //let e = 'matched library item ' + x + "'s title. Its " + library[x].title
+        updateDisplay(library[x].title, library[x].author, library[x].pages, library[x].haveRead);
       } else {
-        console.log('not a match match, title');
+        console.log('not a match, title');
       }
     }
   } else if (searchSelected.name === searchAuthor.name) {
@@ -243,7 +245,52 @@ function search(haveRead) {
 
 }
 
-//----------- Match function -----------------------------------
+//----------- Match function --------------------------
 function match(book) {
   console.log('book in match function is ' + book)
+}
+
+//---------- Update Display -------------------------
+//display global variable(s)
+let updateCount = 0;
+
+function updateDisplay(title, author, pages, haveRead) {
+  updateCount ++;
+
+  let currentDisplay = document.getElementById('screen');
+
+  const tileBack = document.createElement('div');
+  tileBack.classList.add('tileBack');
+
+  const bookTitle = document.createElement('div');
+  bookTitle.classList.add('book-info');
+  bookTitle.textContent = 'Title: ' + title;
+
+  const bookAuthor = document.createElement('div');
+  bookAuthor.classList.add('book-info');
+  bookAuthor.textContent = 'Author: ' + author;
+
+  const bookPages = document.createElement('div');
+  bookPages.classList.add('book-info');
+  bookPages.textContent = 'Number of Pages: ' + pages;
+
+  const bookHaveRead = document.createElement('div');
+  bookHaveRead.classList.add('book-info');
+  bookHaveRead.textContent = 'Have I read? ' + haveRead;
+
+  const deleteButton = document.createElement('div');
+  deleteButton.classList.add('deleteButton');
+  deleteButton.textContent = 'X'
+
+
+
+
+  currentDisplay.appendChild(tileBack);
+  tileBack.appendChild(bookTitle);
+  tileBack.appendChild(bookAuthor);
+  tileBack.appendChild(bookPages);
+  tileBack.appendChild(bookHaveRead);
+  tileBack.appendChild(deleteButton);
+
+  //currentDisplay.textContent = match
 }
