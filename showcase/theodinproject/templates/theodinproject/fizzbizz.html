@@ -2,7 +2,8 @@
 
   <html>
     <head>
-
+      {% load static %}
+      <link type="text/css" rel="stylesheet" href="{% static 'fizzbuzz/style.css' %}">
     </head>
 
 
@@ -18,22 +19,10 @@
       <br>
 
       <p id=output></p>
-      <script>
+      <script src="{% static 'fizzbuzz/fizzbuzz.js' %}">
 
 
-        let answer = parseInt(prompt("Please enter the number you would like to FizzBuzz up to: "));
 
-        for (let i = 1; i <= answer; i++) {
-          if (i % 3 === 0 && i % 5 === 0) {
-            console.log("FizzBizz");
-          } else if (i % 3 === 0) {
-            console.log("Fizz");
-          } else if (i % 5 === 0) {
-            console.log("Bizz");
-          } else {
-            console.log(i);
-          }
-        }
 
       </script>
 
