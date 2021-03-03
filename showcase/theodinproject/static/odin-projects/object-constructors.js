@@ -10,6 +10,7 @@ if (library === null) {
 
 for (x=0; x<library.length; x++) {
   console.log(library[x]);
+  updateDisplay(library[x].title, library[x].author, library[x].pages, library[x].haveRead, false);
 }
 
 
@@ -23,6 +24,13 @@ function addToLibrary (newBook) {
   if(storageAvailable('localStorage')) {
     localStorage.setItem('localLibrary', JSON.stringify(library));
   }
+
+}
+
+//-------------Remove book from local library function -------
+
+function removeFromLibrary (book) {
+  console.log('removeFromLibrary function initiated');
 
 }
 
@@ -152,7 +160,7 @@ flsRead.addEventListener('click', function() {
 //---------------------Search Function Code----------------------------
 
 
-//Make constants Using query Selector
+//Make constants
 const searchData = document.querySelector('[data-search]');
 const searchSelector = document.querySelectorAll('.search-selector');
 
@@ -187,34 +195,36 @@ function search(haveRead) {
   const searchAuthor = document.getElementById('add-author-name');
   const searchPages = document.getElementById('add-book-pages');
   const searchHaveRead = document.getElementById('add-have-read')
-  //need to look at one before you play with it?
-  //remember to find the exact property you need using . notation or []
+
+
+  //-need to look at one before you play with it?
 
   //console.log("searchSelected is " + searchSelected + ' at search function start');
   //console.log('searchTitle is ' + searchTitle + ' at search function start')
   //console.log('searchAuthor is ' + searchAuthor + ' at search function start')
   //console.log('searchPages is ' + searchPages + ' at search function start')
-  console.log('searchHaveRead was ' + haveRead + ' at search function start');
+  //console.log('searchHaveRead was ' + haveRead + ' at search function start');
 
 
 
   if (searchSelected.name === searchTitle.name) {
-    console.log('Searched for title');
+    //console.log('Searched for title');
     for (x = 0; x < library.length; x++) {
       if (searchTitle.value === library[x].title) {
         //let e = 'matched library item ' + x + "'s title. Its " + library[x].title
-        updateDisplay(library[x].title, library[x].author, library[x].pages, library[x].haveRead);
+        updateDisplay(library[x].title, library[x].author, library[x].pages, library[x].haveRead, true);
       } else {
-        console.log('not a match, title');
+        //console.log('not a match, title');
       }
     }
   } else if (searchSelected.name === searchAuthor.name) {
-    console.log('Searched for author');
+    //console.log('Searched for author');
     for (x = 0; x < library.length; x++) {
       if (searchAuthor.value === library[x].author) {
-        console.log('matched library item ' + x + "'s author. It's " + library[x].author);
+        //console.log('matched library item ' + x + "'s author. It's " + library[x].author);
+        updateDisplay(library[x].title, library[x].author, library[x].pages, library[x].haveRead, true);
       } else {
-        console.log('not a match, author');
+        //console.log('not a match, author');
       }
     }
   } else if (searchSelected.name === searchPages.name) {
@@ -224,19 +234,21 @@ function search(haveRead) {
     for (x = 0; x < library.length; x++) {
       //console.log(library[x].pages);
       if (Number(searchPages.value) === library[x].pages) {
-        console.log('matched library item ' + x + "'s page number. It's " + library[x].pages);
+        //console.log('matched library item ' + x + "'s page number. It's " + library[x].pages);
+        updateDisplay(library[x].title, library[x].author, library[x].pages, library[x].haveRead, true);
       } else {
-        console.log('not a match, pages');
+        //console.log('not a match, pages');
       }
     }
   } else if (searchSelected.name === searchHaveRead.id) {
-    console.log('Searched for have read');
+    //console.log('Searched for have read');
     for (x = 0; x < library.length; x++) {
 
       if (haveRead === library[x].haveRead) {
-        console.log('matched library item ' + x + "'s title is " + library[x].title);
+        //console.log('matched library item ' + x + "'s title is " + library[x].title);
+        updateDisplay(library[x].title, library[x].author, library[x].pages, library[x].haveRead, true);
       } else {
-        console.log('not a match, haveRead');
+        //console.log('not a match, haveRead');
       }
     }
   } else {
@@ -245,19 +257,16 @@ function search(haveRead) {
 
 }
 
-//----------- Match function --------------------------
-function match(book) {
-  console.log('book in match function is ' + book)
-}
-
 //---------- Update Display -------------------------
 //display global variable(s)
 let updateCount = 0;
 
-function updateDisplay(title, author, pages, haveRead) {
-  updateCount ++;
+function updateDisplay(title, author, pages, haveRead, search) {
+  //updateCount ++;
 
   let currentDisplay = document.getElementById('screen');
+
+  let searchDisplay = document.getElementById('search-result');
 
   const tileBack = document.createElement('div');
   tileBack.classList.add('tileBack');
@@ -280,17 +289,40 @@ function updateDisplay(title, author, pages, haveRead) {
 
   const deleteButton = document.createElement('div');
   deleteButton.classList.add('deleteButton');
-  deleteButton.textContent = 'X'
+  deleteButton.textContent = 'X';
+  deleteButton.addEventListener('click', () => deleteBook(title, author, pages, haveRead));
 
+  console.log(search);
 
+  if (search) {
+    searchDisplay.appendChild(tileBack);
+  } else {
+    currentDisplay.appendChild(tileBack);
+  }
 
-
-  currentDisplay.appendChild(tileBack);
+  //currentDisplay.appendChild(tileBack);
+  tileBack.appendChild(deleteButton);
   tileBack.appendChild(bookTitle);
   tileBack.appendChild(bookAuthor);
   tileBack.appendChild(bookPages);
   tileBack.appendChild(bookHaveRead);
-  tileBack.appendChild(deleteButton);
+
 
   //currentDisplay.textContent = match
+}
+
+function deleteBook(title, author, pages, haveRead) {
+  //console.log('title: ' + title + ' Author: ' + author + ' Pages: ' + pages + ' Have Read: ' + haveRead);
+
+  let currentDisplay = document.getElementById('screen');
+
+  for (x = 0; x < library.length; x++) {
+    if (title === library[x].title && author === library[x].author && pages === library[x].pages && haveRead === library[x].haveRead) {
+      console.log('made it through the if statement');
+      library.splice(x, 1);
+      if(storageAvailable('localStorage')) {
+        localStorage.setItem('localLibrary', JSON.stringify(library));
+      }
+    }
+  }
 }
