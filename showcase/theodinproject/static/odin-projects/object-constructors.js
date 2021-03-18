@@ -173,7 +173,7 @@ searchSelector.forEach((selector) =>
 searchData.addEventListener('click', () =>search(haveRead))
 
 function searchSelect(selector) {
-  clearSearchSelect();
+  clearSearchSelect(); //removes clicked-button class to all buttons
 
   //console.log('Selector was ' + selector.name +' at searchSelect function');
 
@@ -181,6 +181,7 @@ function searchSelect(selector) {
 }
 
 function clearSearchSelect() {
+  //Removes clicked-button class to all buttons
   searchSelector.forEach((selector) =>
   selector.classList.remove('clicked-button'))
 }
@@ -262,9 +263,10 @@ function search(haveRead) {
 let updateCount = 0;
 
 function updateDisplay(title, author, pages, haveRead, search) {
-  //updateCount ++;
+  //updateCount++;
+  clearDisplay();
 
-  let currentDisplay = document.getElementById('screen');
+  let currentDisplay = document.getElementById('screen2');
 
   let searchDisplay = document.getElementById('search-result');
 
@@ -297,6 +299,7 @@ function updateDisplay(title, author, pages, haveRead, search) {
   if (search) {
     searchDisplay.appendChild(tileBack);
   } else {
+    console.log('updated screen 2');
     currentDisplay.appendChild(tileBack);
   }
 
@@ -311,10 +314,18 @@ function updateDisplay(title, author, pages, haveRead, search) {
   //currentDisplay.textContent = match
 }
 
+function clearDisplay() {
+  let currentDisplay = document.getElementById('screen2');
+  let searchDisplay = document.getElementById('search-result');
+  while (currentDisplay.firstChild) {
+    currentDisplay.removeChild(screen2.lastChild);
+  }
+}
+
 function deleteBook(title, author, pages, haveRead) {
   //console.log('title: ' + title + ' Author: ' + author + ' Pages: ' + pages + ' Have Read: ' + haveRead);
 
-  let currentDisplay = document.getElementById('screen');
+  let currentDisplay = document.getElementById('screen2');
 
   for (x = 0; x < library.length; x++) {
     if (title === library[x].title && author === library[x].author && pages === library[x].pages && haveRead === library[x].haveRead) {
