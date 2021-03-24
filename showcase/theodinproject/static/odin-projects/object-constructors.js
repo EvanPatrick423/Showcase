@@ -6,32 +6,17 @@ if (library === null) {
   library = [];
   //console.log(library);
 }
-
-
-for (x=0; x<library.length; x++) {
-  console.log(library[x]);
-  updateDisplay(library[x].title, library[x].author, library[x].pages, library[x].haveRead, false);
-}
-
-
+presentLibrary(library);
 
 //--------- Add Current Book to Library array ----------
 function addToLibrary (newBook) {
-  console.log(newBook);
-  console.log('library is ' + library + ' at addToLibrary function');
+  //console.log(newBook);
+  //console.log('library is ' + library + ' at addToLibrary function');
   library.push(newBook);
 
   if(storageAvailable('localStorage')) {
     localStorage.setItem('localLibrary', JSON.stringify(library));
   }
-
-}
-
-//-------------Remove book from local library function -------
-
-function removeFromLibrary (book) {
-  console.log('removeFromLibrary function initiated');
-
 }
 
 //------------ Clear Local Storage Function -----------
@@ -87,10 +72,11 @@ inputData.addEventListener('click', function() {
 
   //calling function to create new object
   const newBook = new Book(addTitle, addAuthor, Number(addPages), haveRead);
-  //log new addition
-  console.log(newBook.info());
+  //console.log(newBook.info());
 
   addToLibrary(newBook);
+  clearDisplay();
+  presentLibrary(library);
 
 });
 
@@ -109,7 +95,7 @@ function Book (Title, Author, Pages, HaveRead)  {
     return (str);
   }
 
-  console.log('Book function ran');
+  //console.log('Book function ran');
 
   //Do I need to return if I'm just setting variable?
   //return(Title, Author, Pages, HaveRead)
@@ -122,11 +108,11 @@ const bookData = document.querySelectorAll("[data-input]");
 
 //Event Listener to initiate clear function
 bookData.forEach((input) =>
-  input.addEventListener("click", () => clear(input))
+  input.addEventListener("click", () => clearInput(input))
 );
 
-//Clear function clears input boxes on click ;)
-function clear(input) {
+//Clear function clears input boxes on click
+function clearInput(input) {
   if (input.classList.contains('used')) return
   else {
     input.classList.add('used');
@@ -206,6 +192,8 @@ function search(haveRead) {
   //console.log('searchPages is ' + searchPages + ' at search function start')
   //console.log('searchHaveRead was ' + haveRead + ' at search function start');
 
+  //clear Search screen
+  clearSearchScreen();
 
 
   if (searchSelected.name === searchTitle.name) {
@@ -230,7 +218,7 @@ function search(haveRead) {
     }
   } else if (searchSelected.name === searchPages.name) {
 
-    console.log('Searched for pages');
+    //console.log('Searched for pages');
     //console.log(searchPages.value)
     for (x = 0; x < library.length; x++) {
       //console.log(library[x].pages);
@@ -257,18 +245,23 @@ function search(haveRead) {
   }
 
 }
-
-//---------- Update Display -------------------------
+//---------- Update Library Display Function ---------------------
+function presentLibrary (library) {
+  for (x=0; x<library.length; x++) {
+    //console.log(library[x]);
+    updateDisplay(library[x].title, library[x].author, library[x].pages, library[x].haveRead, false);
+  }
+}
+//---------- Update Search Display -------------------------
 //display global variable(s)
 let updateCount = 0;
 
 function updateDisplay(title, author, pages, haveRead, search) {
   //updateCount++;
-  clearDisplay();
 
   let currentDisplay = document.getElementById('screen2');
 
-  let searchDisplay = document.getElementById('search-result');
+  let searchDisplay = document.getElementById('searchScreen');
 
   const tileBack = document.createElement('div');
   tileBack.classList.add('tileBack');
@@ -294,12 +287,12 @@ function updateDisplay(title, author, pages, haveRead, search) {
   deleteButton.textContent = 'X';
   deleteButton.addEventListener('click', () => deleteBook(title, author, pages, haveRead));
 
-  console.log(search);
+  //console.log(search);
 
   if (search) {
     searchDisplay.appendChild(tileBack);
   } else {
-    console.log('updated screen 2');
+    //console.log('updated screen 2');
     currentDisplay.appendChild(tileBack);
   }
 
@@ -322,6 +315,14 @@ function clearDisplay() {
   }
 }
 
+function clearSearchScreen() {
+  let currentDisplay = document.getElementById('searchScreen');
+  while (currentDisplay.firstChild) {
+    currentDisplay.removeChild(searchScreen.lastChild);
+  }
+}
+
+
 function deleteBook(title, author, pages, haveRead) {
   //console.log('title: ' + title + ' Author: ' + author + ' Pages: ' + pages + ' Have Read: ' + haveRead);
 
@@ -329,11 +330,13 @@ function deleteBook(title, author, pages, haveRead) {
 
   for (x = 0; x < library.length; x++) {
     if (title === library[x].title && author === library[x].author && pages === library[x].pages && haveRead === library[x].haveRead) {
-      console.log('made it through the if statement');
+      //console.log('made it through the if statement');
       library.splice(x, 1);
       if(storageAvailable('localStorage')) {
         localStorage.setItem('localLibrary', JSON.stringify(library));
       }
+      clearDisplay();
+      presentLibrary(library);
     }
   }
 }
