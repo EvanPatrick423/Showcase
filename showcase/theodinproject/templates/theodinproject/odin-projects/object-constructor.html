@@ -5,6 +5,7 @@
   <title></title>
   {% load static %}
   <link type="text/css" rel="stylesheet" href="{% static 'odin-projects/style.css' %}">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
   <div id="viewport">
@@ -13,23 +14,29 @@
       <div id='screen2'></div>
     </div>
 
-    <div id='add-container'>
-      <input type='text' id='add-book-title' name='title' value='add book name' data-input></input><button class='search-selector' name='title'>Search By</button>
-      <input type='text' id='add-author-name' name='author' value='add author name' data-input></input><button class='search-selector' name='author'>Search By</button>
-      <input type='text' id='add-book-pages' name='pages' value='add book pages' data-input></input><button class='search-selector' name='pages'>Search By</button>
-      <div id ='add-have-read'>
-        <p>Have I read before?</p>
-        <input type='radio' id ='true' name='radio' value='true'></radio>
-        <label for='true'>True</label>
-        <input type='radio' id='false' name='radio' value='false'></radio>
-        <label for='false'>False</label><br>
-        <button class='search-selector' name='add-have-read'>Search By</button>
+    <div id='inputs-container'>
+      <div id='add-container'>
+        <div class='input-box'>
+          <input type='text' id='add-book-title' name='title' value='Book Title' data-input></input><button class='search-selector' name='title'>Search By</button>
+        </div>
+        <div class='input-box'>
+          <input type='text' id='add-author-name' name='author' value='Book Author' data-input></input><button class='search-selector' name='author'>Search By</button>
+        </div>
+        <div class='input-box'>
+          <input type='text' id='add-book-pages' name='pages' value='Book Pages' data-input></input><button class='search-selector' name='pages'>Search By</button>
+        </div>
+        <div id ='add-have-read'>
+          <p>Have I read before?</p>
+          <button id ='true' name='radio' value='false'>True?</button><br>
+          <button class='search-selector' name='add-have-read'>Search By</button>
+        </div>
       </div>
-    </div>
-    <div id='button-container'>
-      <button id='add-button' data-write>add book!</button>
-      <button id='search-button' data-search>Search for Book!</button>
-      <button id='storage-clear'>Clear data stored on local machine.</button>
+      <div id='button-container'>
+        <button id='add-button' class='input-box' data-write>add book!</button>
+        <button id='search-button' class='input-box' data-search>Search for Book!</button>
+        <button id='storage-clear' class='input-box'>Clear data stored on local machine.</button>
+      </div>
+
     </div>
 
   </div>

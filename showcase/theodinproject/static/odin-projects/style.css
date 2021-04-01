@@ -8,6 +8,15 @@
   margin: 0px;
 }
 
+body {
+  background-color: #000000;
+}
+
+#true {
+  height: 50px;
+  width: 100px;
+}
+
 #viewport {
   background-color: var(--body);
   color: var(--font);
@@ -21,6 +30,9 @@
   border-style: solid;
   border-color: var(--font);
   border-width: thin;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
 }
 
 #screen {
@@ -33,6 +45,7 @@
 #screen2 {
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
 }
 
 #searchScreen {
@@ -44,16 +57,23 @@
 
 #screen-column {
   height: 500px;
-  width: 70%;
+  width: 80%;
   display: flex;
   flex-direction: column;
 }
 
+#button-container {
+  display: flex;
+  flex-direction: column;
+}
+
+
 .deleteButton {
-  height: 30px;
-  width: 30px;
+  height: 24px;
+  width: 24px;
   background-color: #000000;
   position: relative;
+  left: 80px;
   border-radius: 50%;
   display: flex;
   justify-content: center;
@@ -63,11 +83,12 @@
 .tileBack {
   background-color: #484848;
   height: 90%;
-  width: 30%;
+  width: 21%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  margin: 10px;
 }
 
 .book-info {
@@ -96,4 +117,10 @@
 .clicked-button {
   background-color: #000000;
   color: #ffffff;
+}
+
+.input-box {
+  margin: 2px;
+  display:flex;
+  justify-content: center;
 }

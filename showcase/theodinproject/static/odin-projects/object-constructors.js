@@ -125,23 +125,29 @@ function clearInput(input) {
 
 //Defining true and false radio buttons
 const truRead = document.getElementById('true');
-const flsRead = document.getElementById('false');
 
 //Define variable to store boolean
-let haveRead;
+let haveRead = false;
 
 
 
-//true radio button click function
-truRead.addEventListener('click', function() {
-  haveRead = true;
-})
-//false radio button click function
-flsRead.addEventListener('click', function() {
-  haveRead = false;
-})
+//true button click function
+truRead.addEventListener('click', function() {haveIRead();});
 
-
+//-----------------haveIRead Function--------------------
+function haveIRead() {
+  if(haveRead === false){
+    haveRead = true;
+    truRead.classList.add('clicked-button');
+    console.log(haveRead);
+  } else if (haveRead === true) {
+    haveRead = false;
+    truRead.classList.remove('clicked-button');
+    console.log(haveRead);
+  } else {
+    console.log('Something messed up at the HaveIRead function');
+  }
+}
 
 //---------------------Search Function Code----------------------------
 
@@ -255,7 +261,6 @@ function presentLibrary (library) {
 //---------- Update Search Display -------------------------
 //display global variable(s)
 let updateCount = 0;
-
 function updateDisplay(title, author, pages, haveRead, search) {
   //updateCount++;
 
@@ -278,16 +283,18 @@ function updateDisplay(title, author, pages, haveRead, search) {
   bookPages.classList.add('book-info');
   bookPages.textContent = 'Number of Pages: ' + pages;
 
-  const bookHaveRead = document.createElement('div');
+  const bookHaveRead = document.createElement('button');
   bookHaveRead.classList.add('book-info');
-  bookHaveRead.textContent = 'Have I read? ' + haveRead;
+  bookHaveRead.textContent = haveRead;
+  bookHaveRead.setAttribute('id', title + ' haveread')
+  bookHaveRead.addEventListener('click', () => changeHaveRead(title, haveRead, library));
 
   const deleteButton = document.createElement('div');
   deleteButton.classList.add('deleteButton');
   deleteButton.textContent = 'X';
   deleteButton.addEventListener('click', () => deleteBook(title, author, pages, haveRead));
 
-  //console.log(search);
+  console.log(search);
 
   if (search) {
     searchDisplay.appendChild(tileBack);
@@ -339,4 +346,24 @@ function deleteBook(title, author, pages, haveRead) {
       presentLibrary(library);
     }
   }
+}
+
+function changeHaveRead(title, haveRead, library) {
+  console.log(library.title);
+  if(haveRead === true) {
+    haveRead = false;
+    console.log(haveRead + ' of ' + library.title);
+  } else {
+    haveRead = true;
+    console.log(haveRead + ' of ' + library.title);
+  }
+
+  for (x = 0; x < library.length; x++) {
+    if(title === library[x].title) {
+      library.haveRead === haveRead;
+    }
+  }
+
+  clearDisplay();
+  presentLibrary(library);
 }
