@@ -25,14 +25,14 @@ body {
 }
 
 #add-container {
-  background-color: #000000;
-  color: var(--body_);
-  border-style: solid;
-  border-color: var(--font);
-  border-width: thin;
+  background-color: var(--body);
+  color: var(--body);
+  border-bottom-style: solid;
+  border-bottom-color: var(--font);
+  border-bottom-width: thin;
   display: flex;
   flex-direction: column;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
 }
 
 #screen {
@@ -53,6 +53,9 @@ body {
   width: 100%;
   display: flex;
   justify-content: center;
+  border-color: var(--font);
+  border-width: thin;
+  border-style: solid;
 }
 
 #screen-column {
@@ -60,11 +63,25 @@ body {
   width: 80%;
   display: flex;
   flex-direction: column;
+  margin-right: 3px;
 }
 
 #button-container {
   display: flex;
   flex-direction: column;
+}
+
+#inputs-container {
+  border-style: solid;
+  border-width: thin;
+  border-color: var(--font);
+  height: auto;
+  width:20%;
+}
+
+#explanation-container {
+  display: flex;
+  width:100%;
 }
 
 

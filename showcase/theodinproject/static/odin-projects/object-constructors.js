@@ -286,7 +286,7 @@ function updateDisplay(title, author, pages, haveRead, search) {
   const bookHaveRead = document.createElement('button');
   bookHaveRead.classList.add('book-info');
   bookHaveRead.textContent = haveRead;
-  bookHaveRead.setAttribute('id', title + ' haveread')
+  bookHaveRead.setAttribute('id', title + '-haveread')
   bookHaveRead.addEventListener('click', () => changeHaveRead(title, haveRead, library));
 
   const deleteButton = document.createElement('div');
@@ -294,7 +294,7 @@ function updateDisplay(title, author, pages, haveRead, search) {
   deleteButton.textContent = 'X';
   deleteButton.addEventListener('click', () => deleteBook(title, author, pages, haveRead));
 
-  console.log(search);
+  //console.log(search);
 
   if (search) {
     searchDisplay.appendChild(tileBack);
@@ -348,19 +348,21 @@ function deleteBook(title, author, pages, haveRead) {
   }
 }
 
-function changeHaveRead(title, haveRead, library) {
-  console.log(library.title);
-  if(haveRead === true) {
-    haveRead = false;
-    console.log(haveRead + ' of ' + library.title);
+function changeHaveRead(bookTitle, bookHaveRead, library) {
+  console.log(library);
+  if(bookHaveRead === true) {
+    bookHaveRead = false;
+    console.log(bookHaveRead + ' of ' + library.title);
   } else {
-    haveRead = true;
-    console.log(haveRead + ' of ' + library.title);
+    bookHaveRead = true;
+    console.log(bookHaveRead + ' of ' + library.title);
   }
 
   for (x = 0; x < library.length; x++) {
-    if(title === library[x].title) {
-      library.haveRead === haveRead;
+    if(bookTitle === library[x].title) {
+      console.log(library[x].title);
+      library[x].haveRead = bookHaveRead;
+      console.log(library[x].haveRead);
     }
   }
 
