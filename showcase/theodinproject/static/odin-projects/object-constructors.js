@@ -236,7 +236,7 @@ function search(haveRead) {
       }
     }
   } else if (searchSelected.name === searchHaveRead.id) {
-    //console.log('Searched for have read');
+    console.log('Searched for have read');
     for (x = 0; x < library.length; x++) {
 
       if (haveRead === library[x].haveRead) {
@@ -249,6 +249,8 @@ function search(haveRead) {
   } else {
     console.log('there was a problem matching the item to search');
   }
+  console.log(searchSelected.name);
+  console.log(searchHaveRead.id);
 
 }
 //---------- Update Library Display Function ---------------------
