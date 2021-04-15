@@ -80,7 +80,7 @@ inputData.addEventListener('click', function() {
 
 });
 
-//------- Making the Book Object --------------------
+//------- Making the Book Object --------------------(kinda bad object constructors, change to factory function later)
 
 function Book (Title, Author, Pages, HaveRead)  {
 
@@ -94,6 +94,9 @@ function Book (Title, Author, Pages, HaveRead)  {
   this.info = function() {
     return (str);
   }
+
+  //const that = this; //use a 'that' variable to snap the this function to a specific scope
+  //console.log(that);
 
   //console.log('Book function ran');
 
@@ -351,20 +354,20 @@ function deleteBook(title, author, pages, haveRead) {
 }
 
 function changeHaveRead(bookTitle, bookHaveRead, library) {
-  console.log(library);
+  //console.log(library);
   if(bookHaveRead === true) {
     bookHaveRead = false;
-    console.log(bookHaveRead + ' of ' + library.title);
+    //console.log(bookHaveRead + ' of ' + library.title);
   } else {
     bookHaveRead = true;
-    console.log(bookHaveRead + ' of ' + library.title);
+    //console.log(bookHaveRead + ' of ' + library.title);
   }
 
   for (x = 0; x < library.length; x++) {
     if(bookTitle === library[x].title) {
-      console.log(library[x].title);
+      //console.log(library[x].title);
       library[x].haveRead = bookHaveRead;
-      console.log(library[x].haveRead);
+      //console.log(library[x].haveRead);
     }
   }
 

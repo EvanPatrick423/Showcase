@@ -81,7 +81,8 @@ body {
 
 #explanation-container {
   display: flex;
-  width:100%;
+  width:97%;
+  margin: 3px;
 }
 
 
