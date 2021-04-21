@@ -36,9 +36,13 @@ def calculator (request):
     template = loader.get_template('theodinproject/calculator.html')
     return render(request, 'theodinproject/calculator.html')
 
-def objectConstructor (request):
-    template = loader.get_template('theodinproject/odin-projects/object-constructor.html')
-    return render(request, 'theodinproject/odin-projects/object-constructor.html')
+def library (request):
+    template = loader.get_template('theodinproject/odin-projects/library.html')
+    return render(request, 'theodinproject/odin-projects/library.html')
+
+def ticTacToe (request):
+    template = loader.get_template('theodinproject/odin-projects/tic-tac-toe.html')
+    return render(request, 'theodinproject/odin-projects/tic-tac-toe.html')
 
 """
 def script(request):

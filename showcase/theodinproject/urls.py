@@ -12,5 +12,6 @@ urlpatterns = [
     path('keyboardDrumKit', views.keyboardDrumKit, name='keyboardDrumKit'),
     path('etchASketch', views.etchASketch, name='etchASketch'),
     path('calculator', views.calculator, name='calculator'),
-    path('object-constructor', views.objectConstructor, name='object-constructor'),
+    path('library', views.library, name='library'),
+    path('tic-tac-toe', views.ticTacToe, name='tic-tac-tooe'),
 ]
