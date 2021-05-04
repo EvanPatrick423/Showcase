@@ -42,24 +42,26 @@ const board = (() => {
         let idstring = 'ID' + i + z;
         //console.log(idstring);
         item.classList.add(idstring);
+        item.addEventListener('click', () => {
+          changeSymbol(idstring);
+        })
         row.appendChild(item);
       }
     }
   }
 
-  const changeSymbol = () => {
-    for (let i = 0; i < 3; i++) {
-      for (let z = 0; z < 3; z++) {
-        let id = 'ID' + i + z;
-        console.log(id);
-        let findId = document.querySelectorAll(id);
-        findId.classList.add('clicked');
-      }
-    }
+  const changeSymbol = (id) => {
+    //console.log(id);
+    let querySelect = '.' + id;
+    console.log(querySelect);
+    let div = document.querySelector(querySelect);
+    console.log(div);
+    div.classList.add("clicked");
   }
 
 
-  return{printBoard, write, updateDisplay};
+
+  return{printBoard, write, updateDisplay, changeSymbol};
 })();
 
 
