@@ -31,6 +31,10 @@
   border-style: solid;
 }
 
-.clicked {
+.playerx {
   background-color: green;
+}
+
+.playero {
+  background-color: blue;
 }

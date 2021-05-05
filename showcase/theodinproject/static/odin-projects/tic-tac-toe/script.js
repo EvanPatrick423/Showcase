@@ -1,36 +1,26 @@
 //--------   Board logic   ---------------
 const board = (() => {
-  //arrays for the rows of the tic tac toe board
-  const row0 = [2,2,2];
-  const row1 = [2,2,2];
-  const row2 = [2,2,2];
+  //thing that holds the board values
+  const values = [[0,1,2],[3,4,5],[6,7,'o']];
 
 
 
 
 
   const printBoard = () => {
-    console.log('row0 ' + row0);
-    console.log('row1 ' + row1);
-    console.log('row2 ' + row2);
+    console.log(values);
   }
 
   const write = (row, column, player) => {
-      if (row === 0){
-        //console.log('ding at 0');
-        row0[column] = player;
-      } else if (row === 1) {
-        //console.log('ding at 1');
-        row1[column] = player;
-      } else if (row === 2) {
-        row2[column] = player;
-      } else {
-        console.log('there was an error at the write function');
-      }
-      board.updateDisplay();
+    //console.log(values[row][column]);
+    values[row][column] = player;
+    //console.log(values[row][column]);
+    board.deleteBoard();
+    board.updateDisplay();
   }
 
   const updateDisplay = () => {
+    printBoard();
     for (let i = 0; i < 3; i++) {
       const row = document.createElement('div');
       row.classList.add('row');
@@ -39,31 +29,44 @@ const board = (() => {
       for (let z = 0; z < 3; z++) {
         const item = document.createElement('div');
         item.classList.add('item');
-        let idstring = 'ID' + i + z;
-        //console.log(idstring);
-        item.classList.add(idstring);
+
+        let value = values[i][z];
+        if (value === 'x') {
+          item.classList.add('playerx');
+        } else if (value === 'o') {
+          item.classList.add('playero')
+        } else {
+
+        }
+
+        let player = 'x';
         item.addEventListener('click', () => {
-          changeSymbol(idstring);
-        })
+          console.log('event trigger fired ' + player)
+          write(i,z,player);
+        });
         row.appendChild(item);
       }
     }
   }
 
-  const changeSymbol = (id) => {
-    //console.log(id);
-    let querySelect = '.' + id;
-    console.log(querySelect);
-    let div = document.querySelector(querySelect);
-    console.log(div);
-    div.classList.add("clicked");
+  const deleteBoard = () => {
+    const toDelete = document.querySelector('#playBoard')
+    while (toDelete.firstChild) {
+      toDelete.removeEventListener('click', () => {
+        write(i,z,player);
+      });
+      toDelete.removeChild(playBoard.lastChild);
+    }
   }
 
 
-
-  return{printBoard, write, updateDisplay, changeSymbol};
+  return{printBoard, write, updateDisplay, deleteBoard};
 })();
 
+const turn =(() => {
 
-//board.printBoard();
+});
+
+
 board.write(0,0,'x');
+//board.printBoard();
