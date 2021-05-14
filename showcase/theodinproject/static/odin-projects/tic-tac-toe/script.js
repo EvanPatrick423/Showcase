@@ -1,12 +1,7 @@
 //--------   Board logic   ---------------
 const board = (() => {
   //thing that holds the board values
-  const values = [[0,1,2],[3,4,5],[6,7,'o']];
-
-
-
-
-
+  const values = [[0,1,2],[3,4,5],[6,7,8]];
   const printBoard = () => {
     console.log(values);
   }
@@ -18,9 +13,8 @@ const board = (() => {
     board.deleteBoard();
     board.updateDisplay();
   }
-
   const updateDisplay = () => {
-    printBoard();
+    //printBoard();
     for (let i = 0; i < 3; i++) {
       const row = document.createElement('div');
       row.classList.add('row');
@@ -39,16 +33,17 @@ const board = (() => {
 
         }
 
-        let player = 'x';
         item.addEventListener('click', () => {
-          console.log('event trigger fired ' + player)
+          let data = turn.setTurnOutput();
+          player = data.x
+          console.log(player);
           write(i,z,player);
+          turn.whosTurn();
         });
         row.appendChild(item);
       }
     }
   }
-
   const deleteBoard = () => {
     const toDelete = document.querySelector('#playBoard')
     while (toDelete.firstChild) {
@@ -58,15 +53,65 @@ const board = (() => {
       toDelete.removeChild(playBoard.lastChild);
     }
   }
-
-
-  return{printBoard, write, updateDisplay, deleteBoard};
+  return{printBoard, write, updateDisplay, deleteBoard, values};
 })();
 
-const turn =(() => {
+//console.log(board.values);
 
-});
+const playerFactory = (name, score) => {
+  return {name, score};
+}
+
+const turn = (() => {
+  const playerx = playerFactory('x',0);
+  const playero = playerFactory('o',0);
+
+  let counter = 0;
+
+  const playerXTurn = () => {
+    counter++;
+  }
+  const playerOTurn = () => {
+    counter--;
+  }
+  let turnOutput;
+  const whosTurn = () => {
+    console.log('whosturn ran');
+    if (counter === 0) {
+      turnOutput = playerx.name;
+      playerXTurn();
+      sayCounter();
+    } else if (counter === 1) {
+      turnOutput = playero.name;
+      playerOTurn();
+      sayCounter();
+    } else {
+      console.log('something went wrong');
+    }
+    return{turnOutput}
+  }
+  const sayTurnOutput = () => {
+    console.log(turnOutput);
+  }
+
+  const setTurnOutput = () => {
+    x = turnOutput;
+    return{x}
+  }
 
 
-board.write(0,0,'x');
+  const sayCounter = () => {console.log('counter is ' + counter);}
+  const sayHello = () => {console.log('say hello');}
+  const sayPlayerx = () => {console.log(playerx);}
+  return{whosTurn, sayTurnOutput, turnOutput, setTurnOutput}
+})();
+
+let x;
+
+board.updateDisplay();
+turn.whosTurn(); //Always have turn functions using turnOutput after this
+//turn.sayTurnOutput();
+turn.setTurnOutput(x);
+//console.log(turn.turnOutput);
+//board.write(0,0,'x');
 //board.printBoard();
