@@ -7,11 +7,21 @@ const board = (() => {
   }
 
   const write = (row, column, player) => {
-    //console.log(values[row][column]);
-    values[row][column] = player;
-    //console.log(values[row][column]);
-    board.deleteBoard();
-    board.updateDisplay();
+    console.log(values[row][column]);
+    let thing = values[row][column];
+    if (thing === 'x') {
+      console.log('blah');
+    } else if (thing === 'o'){
+      console.log('blah');
+    }
+      else {
+      console.log('thing');
+      values[row][column] = player;
+      //console.log(values[row][column]);
+      board.deleteBoard();
+      board.updateDisplay();
+    }
+
   }
   const updateDisplay = () => {
     //printBoard();
@@ -36,7 +46,7 @@ const board = (() => {
         item.addEventListener('click', () => {
           let data = turn.setTurnOutput();
           player = data.x
-          console.log(player);
+          //console.log(player);
           write(i,z,player);
           turn.whosTurn();
         });
@@ -44,6 +54,8 @@ const board = (() => {
       }
     }
   }
+
+
   const deleteBoard = () => {
     const toDelete = document.querySelector('#playBoard')
     while (toDelete.firstChild) {
@@ -59,7 +71,9 @@ const board = (() => {
 //console.log(board.values);
 
 const playerFactory = (name, score) => {
-  return {name, score};
+  const thing = name + score
+  //console.log(thing);
+  return {name, score, thing};
 }
 
 const turn = (() => {
@@ -76,15 +90,15 @@ const turn = (() => {
   }
   let turnOutput;
   const whosTurn = () => {
-    console.log('whosturn ran');
+    //console.log('whosturn ran');
     if (counter === 0) {
       turnOutput = playerx.name;
       playerXTurn();
-      sayCounter();
+      //sayCounter();
     } else if (counter === 1) {
       turnOutput = playero.name;
       playerOTurn();
-      sayCounter();
+      //sayCounter();
     } else {
       console.log('something went wrong');
     }
