@@ -1,28 +1,40 @@
-//--------   Board logic   ---------------
+//----------------Make Board Objects----------------------
+const boardItem = (place) => {
+  let name = 'z';
+  return{place, name}
+}
 const board = (() => {
+  let stillPlay = true;
   //thing that holds the board values
-  const values = [[0,1,2],[3,4,5],[6,7,8]];
+  const values = [[boardItem(0),boardItem(1),boardItem(2)],[boardItem(3),boardItem(4),boardItem(5)],[boardItem(6),boardItem(7),boardItem(8)]];
+
   const printBoard = () => {
     console.log(values);
   }
 
   const write = (row, column, player) => {
-    console.log(values[row][column]);
-    let thing = values[row][column];
+    //console.log(values[row][column]);
+    let thing = values[row][column].name;
+    //console.log(thing);
     if (thing === 'x') {
-      console.log('blah');
+      //console.log('blah');
     } else if (thing === 'o'){
-      console.log('blah');
+      //console.log('blah');
     }
       else {
-      console.log('thing');
-      values[row][column] = player;
-      //console.log(values[row][column]);
-      board.deleteBoard();
-      board.updateDisplay();
+        if (stillPlay) {
+          values[row][column].name = player;
+          turn.whosTurn();
+          winCheck('x');
+          winCheck('o');
+        }
     }
+    board.deleteBoard();
+    board.updateDisplay();
 
+    //board.printBoard();
   }
+
   const updateDisplay = () => {
     //printBoard();
     for (let i = 0; i < 3; i++) {
@@ -34,7 +46,7 @@ const board = (() => {
         const item = document.createElement('div');
         item.classList.add('item');
 
-        let value = values[i][z];
+        let value = values[i][z].name;
         if (value === 'x') {
           item.classList.add('playerx');
         } else if (value === 'o') {
@@ -48,13 +60,37 @@ const board = (() => {
           player = data.x
           //console.log(player);
           write(i,z,player);
-          turn.whosTurn();
+
         });
         row.appendChild(item);
       }
     }
   }
 
+  const winCheck = (check) => {
+    console.log('check: ' + check);
+    console.log('values: ' + values[0][0].name + ' ' + values[0][1].name + ' ' + values[0][2].name);
+    if (values[0][0].name === check && values[0][1].name === check && values[0][2].name === check) {
+      endGame();
+    } else if (values[1][0].name === check && values[1][1].name === check && values[1][2].name === check) {
+      endGame();
+    } else if (values[2][0].name === check && values[2][1].name === check && values[2][2].name === check) {
+      endGame();
+    } else if (values[0][0].name === check && values[1][0].name === check && values[2][0].name === check) {
+      endGame();
+    } else if (values[0][1].name === check && values[1][1].name === check && values[2][1].name === check) {
+      endGame();
+    } else if (values[0][2].name === check && values[1][2].name === check && values[2][2].name === check) {
+      endGame();
+    } else if (values[0][0].name === check && values[1][1].name === check && values[2][2].name === check) {
+      endGame();
+    }
+  }
+
+  const endGame = () => {
+    stillPlay = false;
+    console.log('Game Ended');
+  }
 
   const deleteBoard = () => {
     const toDelete = document.querySelector('#playBoard')
@@ -65,15 +101,13 @@ const board = (() => {
       toDelete.removeChild(playBoard.lastChild);
     }
   }
-  return{printBoard, write, updateDisplay, deleteBoard, values};
+  return{printBoard, write, updateDisplay, deleteBoard};
 })();
 
 //console.log(board.values);
 
 const playerFactory = (name, score) => {
-  const thing = name + score
-  //console.log(thing);
-  return {name, score, thing};
+  return {name, score};
 }
 
 const turn = (() => {
@@ -112,20 +146,10 @@ const turn = (() => {
     x = turnOutput;
     return{x}
   }
-
-
-  const sayCounter = () => {console.log('counter is ' + counter);}
-  const sayHello = () => {console.log('say hello');}
-  const sayPlayerx = () => {console.log(playerx);}
   return{whosTurn, sayTurnOutput, turnOutput, setTurnOutput}
 })();
 
-let x;
 
 board.updateDisplay();
 turn.whosTurn(); //Always have turn functions using turnOutput after this
-//turn.sayTurnOutput();
-turn.setTurnOutput(x);
-//console.log(turn.turnOutput);
-//board.write(0,0,'x');
 //board.printBoard();
