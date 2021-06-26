@@ -1,9 +1,62 @@
+const score= (() => {
+
+  const getScore = () => {
+    oScore = turn.playero.score
+    xScore = turn.playerx.score
+    //console.log('oScore = ' + oScore);
+    //console.log('xScore = ' + xScore);
+
+    deleteDisplay();
+    generateDisplay();
+  }
+
+  const deleteDisplay = () => {
+    const container = document.querySelector('#scoreBoard');
+    while (container.firstChild) {
+      container.removeChild(scoreBoard.lastChild);
+    }
+    const container2 = document.querySelector('#buttonPlace');
+    while (container2.firstChild) {
+      container2.removeChild(buttonPlace.lastChild);
+    }
+  }
+
+  const generateDisplay = () => {
+    for (let i = 0; i < 2; i++) {
+      const playerScore = document.createElement('div');
+      playerScore.classList.add('score-board');
+      if (i === 1) {
+        //console.log('ran1');
+        let text = document.createTextNode('Blue Player Score = ' + oScore);
+        playerScore.appendChild(text);
+        //deleteDisplay();
+        scoreBoard.appendChild(playerScore);
+      } else {
+        //console.log('ran else');
+        let text = document.createTextNode('Green Player Score = ' + xScore);
+        playerScore.appendChild(text);
+        //deleteDisplay();
+        scoreBoard.appendChild(playerScore);
+      }
+    }
+    const playButton = document.createElement('button');
+    playButton.classList.add('play-button');
+    playButton.addEventListener('click', board.resetBoard);
+    const buttonText = document.createTextNode('New Game!');
+    playButton.appendChild(buttonText);
+    buttonPlace.appendChild(playButton);
+  }
+
+  return{getScore}
+})();
+
 //----------------Make Board Objects----------------------
 const boardItem = (place) => {
   let name = 'z';
   return{place, name}
 }
 const board = (() => {
+  let turncount = 0;
   let stillPlay = true;
   //thing that holds the board values
   const values = [[boardItem(0),boardItem(1),boardItem(2)],[boardItem(3),boardItem(4),boardItem(5)],[boardItem(6),boardItem(7),boardItem(8)]];
@@ -17,12 +70,15 @@ const board = (() => {
     let thing = values[row][column].name;
     //console.log(thing);
     if (thing === 'x') {
-      //console.log('blah');
+      console.log('blah1');
     } else if (thing === 'o'){
-      //console.log('blah');
+      console.log('blah2');
     }
       else {
         if (stillPlay) {
+          turncount ++;
+          console.log(turncount);
+
           values[row][column].name = player;
           turn.whosTurn();
           winCheck('x');
@@ -68,28 +124,41 @@ const board = (() => {
   }
 
   const winCheck = (check) => {
-    console.log('check: ' + check);
-    console.log('values: ' + values[0][0].name + ' ' + values[0][1].name + ' ' + values[0][2].name);
+    //console.log('check: ' + check);
+    //console.log('values: ' + values[0][0].name + ' ' + values[0][1].name + ' ' + values[0][2].name);
     if (values[0][0].name === check && values[0][1].name === check && values[0][2].name === check) {
-      endGame();
+      endGame(check);
     } else if (values[1][0].name === check && values[1][1].name === check && values[1][2].name === check) {
-      endGame();
+      endGame(check);
     } else if (values[2][0].name === check && values[2][1].name === check && values[2][2].name === check) {
-      endGame();
+      endGame(check);
     } else if (values[0][0].name === check && values[1][0].name === check && values[2][0].name === check) {
-      endGame();
+      endGame(check);
     } else if (values[0][1].name === check && values[1][1].name === check && values[2][1].name === check) {
-      endGame();
+      endGame(check);
     } else if (values[0][2].name === check && values[1][2].name === check && values[2][2].name === check) {
-      endGame();
+      endGame(check);
     } else if (values[0][0].name === check && values[1][1].name === check && values[2][2].name === check) {
-      endGame();
+      endGame(check);
+    } else if (values[0][2].name === check && values[1][1].name === check && values [2][0].name === check) {
+      endGame(check);
+    } else if (turncount === 9){
+      endGame('bleh');
     }
   }
 
-  const endGame = () => {
+  const endGame = (check) => {
     stillPlay = false;
     console.log('Game Ended');
+    if (check === turn.playero.name) {
+      turn.playero.score ++;
+      //console.log(turn.playero);
+    } else if (check === turn.playerx.name) {
+      turn.playerx.score ++;
+      //console.log(turn.playerx);
+    }
+    score.getScore();
+
   }
 
   const deleteBoard = () => {
@@ -101,7 +170,27 @@ const board = (() => {
       toDelete.removeChild(playBoard.lastChild);
     }
   }
-  return{printBoard, write, updateDisplay, deleteBoard};
+
+  const resetBoard = () => {
+    if (stillPlay) {
+
+    } else {
+        console.log('reset ran');
+        for (let i = 0; i < 3; i++){
+          for (let z =0; z < 3; z++){
+            values[i][z].name = 'z';
+            write(i,z,'z');
+          }
+        }
+        turncount = 0;
+        stillPlay = true;
+        printBoard();
+      }
+    }
+
+
+
+  return{printBoard, write, updateDisplay, deleteBoard, resetBoard};
 })();
 
 //console.log(board.values);
@@ -146,10 +235,12 @@ const turn = (() => {
     x = turnOutput;
     return{x}
   }
-  return{whosTurn, sayTurnOutput, turnOutput, setTurnOutput}
+
+  return{whosTurn, sayTurnOutput, turnOutput, setTurnOutput,playerx, playero}
 })();
 
 
 board.updateDisplay();
 turn.whosTurn(); //Always have turn functions using turnOutput after this
 //board.printBoard();
+score.getScore();
