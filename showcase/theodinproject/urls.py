@@ -13,5 +13,6 @@ urlpatterns = [
     path('etchASketch', views.etchASketch, name='etchASketch'),
     path('calculator', views.calculator, name='calculator'),
     path('library', views.library, name='library'),
-    path('tic-tac-toe', views.ticTacToe, name='tic-tac-tooe'),
+    path('tic-tac-toe', views.ticTacToe, name='tic-tac-toe'),
+    path('newLibrary', views.newLibrary, name='newLibrary'),
 ]

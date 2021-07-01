@@ -44,6 +44,10 @@ def ticTacToe (request):
     template = loader.get_template('theodinproject/odin-projects/tic-tac-toe.html')
     return render(request, 'theodinproject/odin-projects/tic-tac-toe.html')
 
+def newLibrary(request):
+    template = loader.get_template('theodinproject/odin-projects/newLibrary.html')
+    return render(request, 'theodinproject/odin-projects/newLibrary.html')
+
 """
 def script(request):
     template = loader.get_template('')
