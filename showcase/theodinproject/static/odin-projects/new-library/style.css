@@ -1,0 +1,26 @@
+body {
+  margin:4px;
+  background-color: #000000;
+}
+
+#greeting {
+  color: #ffffff;
+}
+
+#top-screen {
+  display: flex;
+  width:100%;
+  background-color: #000000;
+
+}
+
+.input-box {
+  margin: 2px;
+  display:flex;
+  justify-content: center;
+}
+
+.clicked-button {
+  background-color: #000000;
+  color: #ffffff;
+}

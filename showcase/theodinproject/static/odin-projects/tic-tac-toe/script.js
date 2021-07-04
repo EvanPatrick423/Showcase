@@ -1,4 +1,4 @@
-const score= (() => {
+const score = (() => {
 
   const getScore = () => {
     oScore = turn.playero.score

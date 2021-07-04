@@ -56,7 +56,7 @@ function storageAvailable(type) {
 //defining add book button
 const inputData = document.querySelector('[data-write]');
 
-//adding event listener to add book button
+//adding event listener to add buttons
 inputData.addEventListener('click', function() {
   //Pulls Current Book Information
   const addTitle = document.getElementById('add-book-title').value;

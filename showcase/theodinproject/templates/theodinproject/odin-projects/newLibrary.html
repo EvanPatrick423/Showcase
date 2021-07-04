@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title><title>
-
-      <link type='text/css'rel'stylesheet' href='#'>
+    <title>Swing Number 2!</title>
+    {% load static %}
+    <link type='text/css' rel='stylesheet' href="{% static 'odin-projects/new-library/style.css' %}">
 
   </head>
   <body>
@@ -11,7 +11,27 @@
       <p>Hello! This is my second attempt at the library app. Though this time
         I will be using the class method to implement the app.</p>
     </div>
-    <script src='#'></script>
+    <div id = 'top-screen'>
+      <div id='result-screen'>
+
+      </div>
+      <div id = 'input-holder'>
+        <input type='text' id='add-book-title' value='Book Title' data-input></input><button class='search-selector' name='title'>Search By</button>
+        <input type='text' id='add-book-author' value='Book Author' data-input></input><button class='search-selector' name='author'>Search By</button>
+        <input type='number' id='add-book-pages' value = 10 data-input></input><button class='search-selector' name='pages'>Search By</button>
+        <button id='truRead'>Have I read this yet?</button><button class='search-selector' name='haveRead'>Search By</button>
+      </div>
+    </div>
+    <div id = 'bottom-screen'>
+      <div id='show-library'></div>
+      <div id ='button-holder'>
+        <button id='add-button' class='input-box' data-write>add book!</button>
+        <button id='search-button' class='input-box' data-search>Search for Book!</button>
+        <button id='storage-clear' class='input-box'>Clear data stored on local machine.</button>
+      </div>
+    </div>
+
+    <script src="{% static 'odin-projects/new-library/script.js' %}"></script>
   </body>
 </html>
 

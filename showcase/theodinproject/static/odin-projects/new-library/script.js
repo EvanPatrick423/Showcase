@@ -16,7 +16,7 @@
 
 //==============================================================================
 
-const library (() => {
+const library = (() => {
   let database = JSON.parse(localStorage.getItem('localLibrary'));
 
   if (database === null) {
@@ -59,7 +59,55 @@ const library (() => {
       }
   }
 
+  //initate variables
+  haveRead = false;
+
+  //make true value from haveRead button
+  function haveIRead () {
+    console.log('haveIRead ran');
+    if(haveRead === false){
+      haveRead = true;
+      truRead.classList.add('clicked-button');
+      console.log(haveRead);
+    } else if (haveRead === true) {
+      haveRead = false;
+      truRead.classList.remove('clicked-button');
+      console.log(haveRead);
+    } else {
+      console.log('Something messed up at the HaveIRead function');
+    }
+  }
+
+  //Finds Add book Button
+  const inputData = document.querySelector('[data-write]');
+
+  //When add button clicked, do this
+  inputData.addEventListener('click', function() {
+    //Pulls Current Book Information
+    const addTitle = document.getElementById('add-book-title').value;
+    const addAuthor = document.getElementById('add-author-name').value;
+    const addPages = document.getElementById('add-book-pages').value;
+    const truRead = document.getElementById('truRead');
 
 
 
-}
+  });
+
+    //making the book object using class method
+    class Book {
+      constructor (addTitle, addAuthor, addPages,) {
+        this.title = addTitle;
+        this.author = addAuthor;
+        this.pages = addPages;
+      }
+
+      sayInfo () {
+        console.log(this.title);
+        console.log(this.author);
+        console.log(this.pages);
+      }
+    }
+
+
+
+})();
