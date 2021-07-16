@@ -263,7 +263,7 @@ function presentLibrary (library) {
     updateDisplay(library[x].title, library[x].author, library[x].pages, library[x].haveRead, false);
   }
 }
-//---------- Update Search Display -------------------------
+//---------- Update Display -------------------------
 //display global variable(s)
 let updateCount = 0;
 function updateDisplay(title, author, pages, haveRead, search) {
